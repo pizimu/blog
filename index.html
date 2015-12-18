@@ -2,14 +2,7 @@
 layout: index
 title: my Blog
 ---
-reds
-{% 
-  for tag in site.categories
-%}
-{{ site.tagurl }}{{tag[0]}}.html
-{%
-	endfor
-%}
+
 <ul class="unstyled index-list">
 	{% for post in site.posts %}
 		<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }} <span>- {{ post.date | date_to_string }}</span></a></li>
