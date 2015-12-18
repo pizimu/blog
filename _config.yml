@@ -1,4 +1,4 @@
-baseurl: /blog
+baseurl: 
 categoryurl: /cagegory/
 tagurl: /tag/
 gems: [jekyll-paginate]
