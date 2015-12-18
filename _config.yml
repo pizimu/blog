@@ -1,0 +1,7 @@
+baseurl: 
+categoryurl: /cagegory/
+tagurl: /tag/
+gems: [jekyll-paginate]
+# page
+paginate: 5
+paginate_path: /page:num

@@ -1,0 +1,220 @@
+@import url(normalize.css);
+body,
+html {
+  height: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+ul.unstyled,
+ol.unstyled {
+  margin-left: 0;
+  list-style: none;
+}
+.list-inline > li {
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+.site {
+  position: relative;
+  min-height: 100%;
+  height: auto;
+  margin-bottom: -50px;
+  padding-top: 50px;
+  border-top: 5px solid #242a3a;
+  box-sizing: border-box;
+}
+.site > * {
+  width: 900px;
+  margin: 0 auto;
+}
+.page-header {
+  text-align: center;
+  border-bottom: 5px solid #242a3a;
+}
+.page-header .top-menu {
+  width: 900px;
+  margin: 0 auto;
+}
+.page-header .top-menu > ul {
+  padding-left: 0;
+}
+.page-header .top-menu li a {
+  display: block;
+  padding: .2em .6em;
+  color: #fff;
+  background-color: #242a3a;
+  border: 1px solid #242a3a;
+  font-weight: bold;
+  text-decoration: none;
+}
+.page-header .top-menu li a:hover {
+  color: #242a3a;
+  background-color: #fff;
+}
+.page-header .logo {
+  margin-bottom: 40px;
+}
+.page-header .logo .logo-pizi {
+  position: relative;
+  margin: 60px auto 30px;
+  width: 230px;
+  height: 110px;
+}
+.page-header .logo .logo-pizi div {
+  position: absolute;
+  background-color: #242a3a;
+}
+.page-header .logo .logo-pizi .p-left {
+  top: 10px;
+  left: 10px;
+  width: 8px;
+  height: 90px;
+}
+.page-header .logo .logo-pizi .p-right-outer {
+  top: 10px;
+  left: 18px;
+  width: 43px;
+  height: 50px;
+  border-radius: 0 40px 40px 0;
+}
+.page-header .logo .logo-pizi .p-right-inner {
+  top: 18px;
+  left: 18px;
+  width: 35px;
+  height: 34px;
+  border-radius: 0 40px 40px 0;
+  background-color: #fff;
+}
+.page-header .logo .logo-pizi .i-f-outer {
+  top: 10px;
+  left: 75px;
+  width: 24px;
+  height: 90px;
+}
+.page-header .logo .logo-pizi .i-f-inner {
+  top: 18px;
+  left: 75px;
+  width: 8px;
+  height: 74px;
+  border-left: 8px solid #fff;
+  border-right: 8px solid #fff;
+}
+.page-header .logo .logo-pizi .z-top {
+  top: 10px;
+  left: 120px;
+  width: 50px;
+  height: 8px;
+}
+.page-header .logo .logo-pizi .z-bottom {
+  top: 92px;
+  left: 120px;
+  width: 50px;
+  height: 8px;
+}
+.page-header .logo .logo-pizi .z-inner {
+  top: 10px;
+  left: 141px;
+  width: 8px;
+  height: 90px;
+  transform: rotate(30deg);
+}
+.page-header .logo .logo-pizi .i-l-outer {
+  top: 10px;
+  left: 192px;
+  width: 24px;
+  height: 90px;
+}
+.page-header .logo .logo-pizi .i-l-inner {
+  top: 18px;
+  left: 192px;
+  width: 8px;
+  height: 74px;
+  border-left: 8px solid #fff;
+  border-right: 8px solid #fff;
+}
+.page-header .logo .logo-pizi:hover {
+  background-color: #242a3a;
+}
+.page-header .logo .logo-pizi:hover div {
+  background-color: #fff;
+}
+.page-header .logo .logo-pizi:hover .p-right-inner {
+  background-color: #242a3a;
+}
+.page-header .logo .logo-pizi:hover .i-f-inner,
+.page-header .logo .logo-pizi:hover .i-l-inner {
+  border-color: #242a3a;
+}
+.page-header .logo h4 {
+  line-height: 1.5em;
+  font-weight: 500;
+  font-size: 20px;
+}
+.page-container.no-page-sider .page-sidebar-wrapper {
+  display: none;
+}
+.page-container.no-page-sider .page-content-wrapper > * {
+  margin-right: 0;
+}
+.page-container .page-content-wrapper {
+  float: left;
+  width: 100%;
+}
+.page-container .page-content-wrapper > * {
+  margin-right: 200px;
+}
+.page-container .page-content-wrapper .index-list {
+  padding: 0;
+  margin: 0;
+}
+.page-container .page-content-wrapper .index-list > li {
+  border-bottom: 1px solid #999;
+}
+.page-container .page-content-wrapper .index-list > li a {
+  display: block;
+  color: #242a3a;
+  line-height: 3em;
+  font-size: 1em;
+  font-weight: 500;
+  text-decoration: none;
+  text-indent: 1em;
+}
+.page-container .page-content-wrapper .index-list > li a span {
+  color: #999;
+  font-size: 0.875em;
+}
+.page-container .page-content-wrapper .index-list > li a:hover {
+  background-color: #f5f5f5;
+}
+.page-container .page-content-wrapper .more {
+  text-align: right;
+}
+.page-container .page-content-wrapper .more a {
+  color: #428bca;
+  text-decoration: none;
+}
+.page-container .page-sidebar-wrapper {
+  float: right;
+  width: 200px;
+  margin-left: -200px;
+}
+footer.page-footer {
+  position: relative;
+  height: 49px;
+  line-height: 49px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  background: #fafafa;
+  text-transform: uppercase;
+  color: #bbb;
+}

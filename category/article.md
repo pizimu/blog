@@ -1,0 +1,23 @@
+---
+layout: article
+title: 'Articles by tag: hello'
+category: article
+---
+
+{% for post in site.posts %}
+{{post.title}}{{ post.date | date:"%Y-%m-%d"  }}{{ post.excerpt }}
+{% endfor %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="/page{{ paginator.previous_page }}" class="previous">Previous</a>
+  {% else %}
+    <span class="previous">Previous</span>
+  {% endif %}
+  <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a href="/page{{ paginator.next_page }}" class="next">Next</a>
+  {% else %}
+  
+    <span class="next ">Next</span>
+  {% endif %}
+</div>				
