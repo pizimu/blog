@@ -3,5 +3,5 @@ categoryurl: /cagegory/
 tagurl: /tag/
 gems: [jekyll-paginate]
 # page
-paginate: 5
+paginate: 1
 paginate_path: /page:num
