@@ -4,4 +4,4 @@ tagurl: /tag/
 gems: [jekyll-paginate]
 # page
 paginate: 1
-paginate_path: /page:num
+paginate_path: '/blog/:num'
