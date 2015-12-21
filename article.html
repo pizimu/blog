@@ -3,9 +3,9 @@ layout: index
 title: my Blog
 ---
 
-{% if paginator.posts %}
+{% if site.posts %}
     <ul class="unstyled index-list">
-    {% for post in paginator.posts %}
+    {% for post in site.posts %}
         <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }} <span>- {{ post.date | date_to_string }}</span></a></li>
     {% endfor %}
     </ul>
