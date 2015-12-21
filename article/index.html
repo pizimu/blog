@@ -1,0 +1,17 @@
+---
+layout: index
+title: my Blog
+---
+
+{% if paginator.posts %}
+    <ul class="unstyled index-list">
+    {% for post in paginator.posts %}
+        <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }} <span>- {{ post.date | date_to_string }}</span></a></li>
+    {% endfor %}
+    </ul>
+    <p class="more">
+        <a href="javascript:;">more >></a>
+    </p>
+{% else %}
+    <p>No posts found.</p>
+{% endif %}
