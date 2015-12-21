@@ -1,6 +1,6 @@
 ---
 layout: article
-title: 'Article List'
+title: Article List -- 15:36
 ---
 
 {% if paginator.posts %}
