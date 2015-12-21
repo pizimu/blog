@@ -1,7 +1,6 @@
 ---
 layout: article
 title: 'Article List'
-category: article
 ---
 
 {% if paginator.posts %}
