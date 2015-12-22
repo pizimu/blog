@@ -38,7 +38,13 @@
 	<script src="{{site.baseurl}}/js/plugins/laycode.js"></script>
 	<script>
 		$(function(){
-			$('.code').laycode();
+			$('.code').each(function)(){
+				$(this).replace(/"/g,'&#34;')
+					   .replace(/'/g,'&#39;')
+					   .replace(/</g,'&lt;')
+					   .replace(/>/g,'&gt;')
+						.laycode();
+			}
 		});
 	</script>
 </body>
