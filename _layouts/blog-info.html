@@ -39,7 +39,7 @@
 	<script>
 		$(function(){
 			$('.code').each(function)(){
-				$(this).html($(this.html().replace(/"/g,'&#34;')
+				$(this).html($(this).html().replace(/"/g,'&#34;')
 					   .replace(/'/g,'&#39;')
 					   .replace(/</g,'&lt;')
 					   .replace(/>/g,'&gt;'))
