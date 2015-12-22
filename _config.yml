@@ -1,6 +1,6 @@
 baseurl: /blog
-categoryurl: /cagegory/
+categoryurl: /category/
 tagurl: /tag/
 # page
 paginate: 1
-paginate_path: 'blog/article/page:num'
+paginate_path: 'blog/page:num'

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/css/theme.css">
+	<title>article category</title>
+</head>
+<body>	
+	<div class="site">
+	<header class="page-header clearfix">
+		<nav class="top-menu">
+	<ul class="unstyled list-inline">
+		<li><a href="/index.html">Index</a></li>
+		<li><a href="/article.html">Article</a></li>
+		<li><a href="javascript:;">Project</a></li>
+		<li><a href="javascript:;">GitHub</a></li>
+	</ul>
+</nav>
+		<h1>ARTICLE</h1>
+	</header>
+	<div class="page-container clearfix">		
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<ul class="unstyled article-list"></ul>
+	
+			</div>
+		</div>
+		<div class="page-sidebar-wrapper">
+	<div class="page-sidebar">
+		<dl>
+			<dt>Categories</dt>
+			<dd>
+				<ul class="unstyled">
+					
+					<li><a href="/category/index.html#cat=javascript">javascript <span class="badge">1</span></a></li>
+					
+					<li><a href="/category/index.html#cat=css">css <span class="badge">1</span></a></li>
+					
+					
+				</ul>
+			</dd>
+			<dt>Tags</dt>
+			<dd>
+				<ul class="unstyled">
+					
+					<li>
+						<a href="/tag/index.html#tag=other">other <span class="badge">1</span></a>
+					</li>
+					
+					<li>
+						<a href="/tag/index.html#tag=javascript">javascript <span class="badge">1</span></a>
+					</li>
+													
+				</ul>
+			</dd>
+		</dl>
+	</div>
+</div>
+	</div>
+</div>
+<div class="clearfix"></div>
+<footer class="page-footer">
+	<div>©  2013—2015 </div>
+</footer>
+<script src="/js/plugins/jquery-1.11.3.min.js"></script>
+<script src="/js/utils.js"></script>
+	<script src="/js/plugins/jquery-1.11.3.min.js"></script>
+	<script src="/js/utils.js"></script>
+	<script>
+	    var dataStr = '{ "other":[{"url":"/javascript/2012/08/24/hello-world.html", "title":"你好，世界", "date":"24 Aug 2012","excerpt":"这个是描述"}],"javascript":[{"url":"/css/2012/08/25/hello-world.html", "title":"你好，世界,我这是一个长标题，我看看标题会怎么样，会不会超出了，那又怎么样呢，再加一句才够长", "date":"25 Aug 2012","excerpt":"HTML 中的所有标题标签，&lt;h1&gt; 到 &lt;h6&gt; 均可使用。另外，还提供了 .h1 到 .h6 类，为的是给内联（inline）属性的文本赋予标题的样式。"}] }',
+	        data = JSON.parse(dataStr),
+	    	render = function(){
+	    		var html = '',
+	    			hash = $.queryToObject($.hash()),	
+	    			avchieves = hash.tag ? data[hash.tag] : [];
+	    		avchieves.forEach(function(item){
+			        html += '<li>' + 
+			                '   <a href="' + item.url + '">' +
+			                '       <div class="clearfix">' +
+			                '           ' + item.title + ' <span class="small">- ' + item.date + '</span>' + 
+			                '       </div>' + 
+			                '       <div class="excerpt dotdotdot">' + 
+			                '           ' + item.excerpt +
+			                '       </div>' + 
+			                '   </a>' + 
+			                '</li>';
+			    });
+			    document.getElementsByClassName('article-list')[0].innerHTML = html;
+	    	};
+	    	render();
+	    
+	    window.onhashchange = function(){
+	    	render();
+	    }
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<div class="page-sidebar-wrapper">
+	<div class="page-sidebar">
+		<dl>
+			<dt>Categories</dt>
+			<dd>
+				<ul class="unstyled">
+					{% for category in site.categories %}
+					<li><a href="{{ site.baseurl }}{{ site.categoryurl }}index.html#cat={{ category | first }}">{{ category | first }} <span class="badge">{{ category | last | size }}</span></a></li>
+					{% endfor %}
+					
+				</ul>
+			</dd>
+			<dt>Tags</dt>
+			<dd>
+				<ul class="unstyled">
+					{% for tag in site.tags %}
+					<li>
+						<a href="{{ site.baseurl }}{{ site.tagurl }}index.html#tag={{ tag | first }}">{{ tag | first }} <span class="badge">{{ tag | last | size}}</span></a>
+					</li>
+					{% endfor %}								
+				</ul>
+			</dd>
+		</dl>
+	</div>
+</div>

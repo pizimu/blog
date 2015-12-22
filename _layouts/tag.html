@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="{{site.baseurl}}/css/theme.css">
+	<title>{{ page.title }}</title>
+</head>
+<body>	
+	{% include article.html %}
+	<script src="{{site.baseurl}}/js/plugins/jquery-1.11.3.min.js"></script>
+	<script src="{{site.baseurl}}/js/utils.js"></script>
+	<script>
+	    var dataStr = '{ {% for cat in site.tags %}{% if cat[0] != site.tags.first[0] %},{% endif %}"{{ cat[0] }}":[{% for post in cat[1] %}{% if post != cat[1].first %},{% endif %}{"url":"{{post.url}}", "title":"{{post.title}}", "date":"{{post.date | date_to_string }}","excerpt":"{{post.excerpt}}"}{% endfor %}]{% endfor %} }',
+	        data = JSON.parse(dataStr),
+	    	render = function(){
+	    		var html = '',
+	    			hash = $.queryToObject($.hash()),	
+	    			avchieves = hash.tag ? data[hash.tag] : [];
+	    		avchieves.forEach(function(item){
+			        html += '<li>' + 
+			                '   <a href="{{ site.baseurl }}' + item.url + '">' +
+			                '       <div class="clearfix">' +
+			                '           ' + item.title + ' <span class="small">- ' + item.date + '</span>' + 
+			                '       </div>' + 
+			                '       <div class="excerpt dotdotdot">' + 
+			                '           ' + item.excerpt +
+			                '       </div>' + 
+			                '   </a>' + 
+			                '</li>';
+			    });
+			    document.getElementsByClassName('article-list')[0].innerHTML = html;
+	    	};
+	    	render();
+	    
+	    window.onhashchange = function(){
+	    	render();
+	    }
+	</script>
+</body>
+</html>

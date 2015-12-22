@@ -1,0 +1,21 @@
+---
+layout: article
+title: my Blog
+---
+
+
+<ul class="unstyled article-list">
+{% for post in site.posts %}
+    <li>
+        <a href="{{ site.baseurl }}{{ post.url }}" >
+            <div class="clearfix">
+               {{ post.title }} <span class="small">- {{ post.date | date_to_string }}</span>
+            </div>
+            <div class="excerpt dotdotdot">
+                {{ post.excerpt}}
+            </div>
+        </a>
+    </li>
+{% endfor %}
+</ul>
+   

@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="{{site.baseurl}}/css/theme.css">
 	<title>{{page.title}}</title>
 </head>
 <body>
-	{{content}}
+	<div class="site">
+		<header class="page-header clearfix">
+			{% include menu.html %}
+		</header>
+		<div class="page-container clearfix">		
+			<div class="page-content-wrapper">
+				<div class="page-content">
+					<div class="page-title">
+						<h2 class="title">
+							{{ page.title }}
+						</h2>
+						<p class="label">
+							<span>tag:{{ page.tags }}</span>
+							<span>category:{{ page.categories }}</span>
+							<span>Date:{{ page.date | date_to_string }}</span>
+						</p>
+					</div>					
+					<div class="article-info">
+						{{ content }}	
+					</div>					
+				</div>
+			</div>
+			{% include sider.html %}
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	{% include footer.html %}
 </body>
 </html>
