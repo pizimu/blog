@@ -33,5 +33,13 @@
 	</div>
 	<div class="clearfix"></div>
 	{% include footer.html %}
+	<link rel="stylesheet" href="{{site.baseurl}}/js/plugins/laycode.css">
+	<script src="{{site.baseurl}}/js/plugins/jquery-1.11.3.min.js"></script>
+	<script src="{{site.baseurl}}/js/plugins/laycode.js"></script>
+	<script>
+		$(function(){
+			$('.code').laycode();
+		});
+	</script>
 </body>
 </html>
