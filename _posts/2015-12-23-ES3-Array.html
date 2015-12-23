@@ -1,0 +1,113 @@
+---
+layout: blog-info
+title: 为ES3添加Array在ES5的新方法
+tags: [ES3]
+categories: [javascript]
+excerpt: ECMAScript5为数组增加了一些新的方法。此处为不支持ES5的浏览器做一个补充。<br />如：forEach,map,some,every,reduce等
+---
+
+<pre class="code">
+(function(){
+    if(!Array.prototype.forEach){
+        var chkFn = function(fn,callback){
+            if(Object.prototype.toString.call(fn) === '[object Function]'){
+                return callback();
+            }else{
+                 throw new Error('argument[0] is not a function');
+            }
+        };
+        $.extend(Array.prototype,{
+            forEach: function(fn,context){
+                var that = this;
+                return chkFn(fn,function(){
+                    var i = 0,
+                        len = that.length;
+                    for(;i < len;i++){
+                        fn.call(context,that[i],i,that);
+                    }   
+                });           
+            },
+            map:function(fn,context){
+                var that = this;
+                return chkFn(fn,function(){
+                    var i = 0,
+                        len = that.length,
+                        newArr = [];
+                    for(;i < len;i++){
+                        newArr.push(fn.call(context,that[i],i,that));
+                    }
+                    return newArr;
+                }); 
+            },
+            some:function(fn,context){
+                var that = this;
+                return chkFn(fn,function(){
+                    var i = 0,
+                        len = that.length,
+                        output = false;
+                    for(;i < len;i++){
+                        if(fn.call(context,that[i],i,that)){
+                            output = true;
+                            break;
+                        }
+                    }
+                    return output;
+                });
+            },
+            every:function(fn,context){
+                var that = this;
+                return chkFn(fn,function(){
+                    var i=0,
+                        len = that.length,
+                        output = true;
+                    for(;i<len;i++){
+                        if(!fn.call(context,that[i],i,that)){
+                            output = false;
+                            break;
+                        }
+                    }
+                    return output;
+                });
+            },
+            reduce:function(fn,init){
+                var that = this,
+                    arrArguments = arguments;
+                return chkFn(fn,function(){
+                    var i = 0,
+                        len = that.length,
+                        sum;
+                    switch(true){
+                        case len === 0:
+                            if(arrArguments.length > 1){
+                                sum = init;
+                            }else{
+                                throw new TypeError('Reduce of empty array with no initial value');
+                            }
+                            break;
+                        case len === 1:
+                             if(arrArguments.length > 1){
+                                sum = fn.call(window,init,that[i],i,that);
+                            }else{
+                                sum = that[0];
+                            }
+                            break;
+                        default:
+                            for(;i<len;i++){                        
+                                if(i === 0){
+                                    if(arrArguments.length > 1){
+                                        sum = init;                            
+                                    }else{                            
+                                        sum = that[i++];                            
+                                    } 
+                                }                        
+                                sum = fn.call(window,sum,that[i],i,that);
+                            }
+                            
+                    }     
+                    return sum;
+                });
+            }
+        });
+    }
+})();
+</pre>
