@@ -238,10 +238,10 @@ function getObjectURL(elm/*element*/) {
 $(document).on('change', '#thumbnail-file', function () {
     var objUrl = $.getObjectURL(this.files[0]);
     if (objUrl === null) {
-        objUrl = 'http://js.touzibaomu.com/images/soft/v20150909/no-pic.gif';
+        objUrl = 'no-pic.gif';
     }
-	if (objUrl) {
-		$($(this).data('previewtarget')).attr("src", objUrl);
-	}
+    if (objUrl) {
+        $($(this).data('previewtarget')).attr("src", objUrl);
+    }
 }); 
 </pre>
