@@ -3,7 +3,7 @@ layout: blog-info
 title: 一些会经常用到的代码
 tags: [javascript]
 categories: [javascript]
-excerpt: 项目中常用到的代码;例如：loading,hash,queryToObject等
+excerpt: 项目中常用到的代码;例如：loading,queryToObject,hash,selectText,insertText等<br />这些可以直接做为jQuery的方法来用：如$.loading
 ---
 <h2 class="page-header">loading <small>一个简单的loading</small></h2>
 <pre class="code">
@@ -148,3 +148,47 @@ function selectText(el/*element*/){
 }
 </pre>
 
+<h2 class="page-header">insertText <small>在输入框中插入字符</small></h2>
+<pre class="code">
+function insertText(){
+    var txtArea = this;
+    //IE
+    if (document.selection) {
+        txtArea.focus();
+        var sel = document.selection.createRange();
+        sel.text = textValue;
+        return;
+    }
+        //Firefox, chrome, mozilla
+    else if (txtArea.selectionStart || txtArea.selectionStart == '0') {
+        var startPos = txtArea.selectionStart;
+        var endPos = txtArea.selectionEnd;
+        var scrollTop = txtArea.scrollTop;
+        txtArea.value = txtArea.value.substring(0, startPos) + textValue + txtArea.value.substring(endPos, txtArea.value.length);
+        txtArea.focus();
+        txtArea.selectionStart = startPos + textValue.length;
+        txtArea.selectionEnd = startPos + textValue.length;
+    }
+    else {
+        txtArea.value += textArea.value;
+        txtArea.focus();
+    }
+}
+</pre>
+<h2 class="page-header">toFixed <small>格式化数字</small></h2>
+<pre class="code">
+function toFixed(value/*String|Number*/, preciseFigures/*Number*/, def/*String*/) {
+    if (value === '') {
+        return '';
+    }
+    if (value === null || value === undefined) {
+        return def === undefined ? '--' : '';
+    }
+    value = Number(value);
+    preciseFigures = /^\d?$/.test(preciseFigures) ? preciseFigures : 2;
+    if (isNaN(value)) {
+        return def === undefined ? '--' : '';
+    }
+    return value.toFixed(preciseFigures);
+}
+</pre>
