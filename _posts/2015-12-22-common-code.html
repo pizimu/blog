@@ -213,3 +213,35 @@ Date.prototype.Format = function (formatStr/*Date String*/) {
     return str;
 }
 </pre>
+<h2 class="page-header">getObjectURL  <small>获取file表单项的url</small></h2>
+<pre class="code">
+//js代码
+function getObjectURL(elm/*element*/) {
+    try {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(elm);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(elm);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(elm);
+        }
+        return url;
+    } catch (e) {
+        return '';
+    }
+};
+//调用方法
+/* 
+<input type="file" name="thumbnail-file" id="thumbnail-file" multiple="multiple" data-previewtarget="#thumbnail-preview" class="fileinput-button" />
+*/
+$(document).on('change', '#thumbnail-file', function () {
+    var objUrl = $.getObjectURL(this.files[0]);
+    if (objUrl === null) {
+        objUrl = 'http://js.touzibaomu.com/images/soft/v20150909/no-pic.gif';
+    }
+	if (objUrl) {
+		$($(this).data('previewtarget')).attr("src", objUrl);
+	}
+}); 
+</pre>
