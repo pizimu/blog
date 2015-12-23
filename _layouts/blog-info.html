@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="site">
-		<header class="page-header clearfix">
+		<header class="clearfix" id="top">
 			{% include menu.html %}
 		</header>
 		<div class="page-container clearfix">		
@@ -18,9 +18,9 @@
 							{{ page.title }}
 						</h2>
 						<p class="label">
-							<span>tag:{{ page.tags }}</span>
-							<span>category:{{ page.categories }}</span>
-							<span>Date:{{ page.date | date_to_string }}</span>
+							<span>tag: <i>{{ page.tags }}</i></span>
+							<span>category: <i>{{ page.categories }}</i></span>
+							<span>date: <i>{{ page.date | date_to_string }}</i></span>
 						</p>
 					</div>					
 					<div class="article-info">
@@ -33,9 +33,11 @@
 	</div>
 	<div class="clearfix"></div>
 	{% include footer.html %}
-	<link rel="stylesheet" href="{{site.baseurl}}/js/plugins/laycode.css">
+	
 	<script src="{{site.baseurl}}/js/plugins/jquery-1.11.3.min.js"></script>
-	<script src="{{site.baseurl}}/js/plugins/laycode.js"></script>
+	
+	<link rel="stylesheet" href="{{site.baseurl}}/js/plugins/laycode/laycode.css">
+	<script src="{{site.baseurl}}/js/plugins/laycode/laycode.js"></script>
 	<script>
 		$(function(){
 			$('.code').each(function(){
