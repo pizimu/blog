@@ -5,7 +5,6 @@ tags: [ES3]
 categories: [javascript]
 excerpt: ECMAScript5为数组增加了一些新的方法。此处为不支持ES5的浏览器做一个补充。<br />如：forEach,map,some,every,reduce等
 ---
-
 <pre class="code">
 (function(){
     if(!Array.prototype.forEach){
@@ -60,7 +59,7 @@ excerpt: ECMAScript5为数组增加了一些新的方法。此处为不支持ES5
                     var i=0,
                         len = that.length,
                         output = true;
-                    for(;i<len;i++){
+                    for(;i < len;i++){
                         if(!fn.call(context,that[i],i,that)){
                             output = false;
                             break;
@@ -92,7 +91,7 @@ excerpt: ECMAScript5为数组增加了一些新的方法。此处为不支持ES5
                             }
                             break;
                         default:
-                            for(;i<len;i++){                        
+                            for(;i < len;i++){                        
                                 if(i === 0){
                                     if(arrArguments.length > 1){
                                         sum = init;                            
