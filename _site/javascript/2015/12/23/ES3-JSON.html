@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/css/theme.css">
+	<title>JSON序列化与反序列化</title>
+</head>
+<body>
+	<div class="site">
+		<header class="clearfix" id="top">
+			<nav class="top-menu">
+	<ul class="unstyled list-inline">
+		<li><a href="/index.html">Index</a></li>
+		<li><a href="/article.html">Article</a></li>
+		<li><a href="javascript:;">Project</a></li>
+		<li><a href="javascript:;">GitHub</a></li>
+	</ul>
+</nav>
+		</header>
+		<div class="page-container clearfix">		
+			<div class="page-content-wrapper">
+				<div class="page-content">
+					<div class="page-title">
+						<h2 class="title">
+							JSON序列化与反序列化
+						</h2>
+						<p class="label">
+							<span>tag: <i>ES3</i></span>
+							<span>category: <i>javascript</i></span>
+							<span>date: <i>23 Dec 2015</i></span>
+						</p>
+					</div>
+							
+					<div class="article-info">
+						<div class="excerpt">
+							针对ECMAScript3不支持JSON的补充方法，基本上满足业务需要。<br /><b>未做多参数支持。</b>
+						</div>	
+						<pre class="code">
+if (!window.JSON) {
+    window.JSON = {
+        parse: function (data) {
+            var rvalidtokens = /(,)|(\[|{)|(}|])|"(?:[^"\\\r\n]|\\["\\\/bfnrt]|\\u[\da-fA-F]{4})*"\s*:?|true|false|null|-?(?!0\d)\d+(?:\.\d+|)(?:[eE][+-]?\d+|)/g;
+            var requireNonComma,
+            depth = null,
+            str = $.trim( data + "" );
+          return str && !$.trim( str.replace( rvalidtokens, function( token, comma, open, close ) {
+            if ( requireNonComma && comma ) {
+              depth = 0;
+            }
+            if ( depth === 0 ) {
+              return token;
+            }
+            requireNonComma = open || comma;
+            depth += !close - !open;
+            return "";
+          }) ) ?
+            ( Function( "return " + str ) )() :
+            jQuery.error( "Invalid JSON: " + data );
+        },
+        stringify: function (obj) {
+            var jsonToStr = function(obj){
+                var str = '';
+                $.each(obj,function(key,value){
+                    if(str) str += ',';
+                    if($.type(obj)==='object')str += '"' + key + '":';
+                    switch($.type(value)){                               
+                        case 'function': //fn过滤
+                            break;
+                        case 'boolean': case 'number':case 'string':
+                            str +=  value.toString();                                  
+                            break;
+                        case 'date':
+                            str += value.toISOString();
+                            break;
+                        case 'array':                                   
+                            str += '[' + jsonToStr(value) + ']';
+                            break;
+                        case 'object':                                    
+                            str += '{' + jsonToStr(value) + '}';
+                            break;                                    
+                    }
+                });
+                return str;
+            };
+            switch($.type(obj)){
+                case 'function':
+                    return undefined;
+                case 'date':
+                    return obj.toISOString();
+                case 'boolean': case 'number': 
+                    return obj.toString();
+                case 'string':
+                    return '"' + obj + '"';
+                case 'array':
+                    return '[' + jsonToStr(obj) + ']';
+                case 'object':
+                    return '{' + jsonToStr(obj) + '}';
+            }
+            
+        }
+    };
+};
+</pre>
+	
+					</div>					
+				</div>
+			</div>
+			<div class="page-sidebar-wrapper">
+	<div class="page-sidebar">
+		<dl>
+			<dt>Categories</dt>
+			<dd>
+				<ul class="unstyled">
+					
+					<li><a href="/category/index.html#cat=javascript">javascript <span class="badge">4</span></a></li>
+					
+					
+				</ul>
+			</dd>
+			<dt>Tags</dt>
+			<dd>
+				<ul class="unstyled">
+					
+					<li>
+						<a href="/tag/index.html#tag=javascript">javascript <span class="badge">2</span></a>
+					</li>
+					
+					<li>
+						<a href="/tag/index.html#tag=ES3">ES3 <span class="badge">2</span></a>
+					</li>
+													
+				</ul>
+			</dd>
+		</dl>
+	</div>
+</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<footer class="page-footer">
+	<div>©  2013—2015 </div>
+</footer>
+	
+	<script src="/js/plugins/jquery-1.11.3.min.js"></script>
+	
+	<link rel="stylesheet" href="/js/plugins/laycode/laycode.css">
+	<script src="/js/plugins/laycode/laycode.js"></script>
+	<script>
+		$(function(){
+			$('.code').each(function(){
+				$(this).html($(this).html().replace(/"/g,'&#34;')
+					   .replace(/'/g,'&#39;')
+					   .replace(/</g,'&lt;')
+					   .replace(/>/g,'&gt;'))
+						.laycode();
+			});
+		});
+	</script>
+</body>
+</html>

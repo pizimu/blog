@@ -22,8 +22,12 @@
 							<span>category: <i>{{ page.categories }}</i></span>
 							<span>date: <i>{{ page.date | date_to_string }}</i></span>
 						</p>
-					</div>					
+					</div>
+							
 					<div class="article-info">
+						<div class="excerpt">
+							{{ page.excerpt }}
+						</div>	
 						{{ content }}	
 					</div>					
 				</div>

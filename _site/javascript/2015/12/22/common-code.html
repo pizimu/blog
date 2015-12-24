@@ -29,8 +29,12 @@
 							<span>category: <i>javascript</i></span>
 							<span>date: <i>22 Dec 2015</i></span>
 						</p>
-					</div>					
+					</div>
+							
 					<div class="article-info">
+						<div class="excerpt">
+							项目中常用到的代码;例如：loading,queryToObject,hash,selectText,insertText等<br />这些可以直接做为jQuery的方法来用：如$.loading
+						</div>	
 						<h2 class="page-header">loading <small>一个简单的loading</small></h2>
 <pre class="code">
 //js代码
@@ -218,6 +222,59 @@ function toFixed(value/*String|Number*/, preciseFigures/*Number*/, def/*String*/
     return value.toFixed(preciseFigures);
 }
 </pre>
+<h2 class="page-header">Date.Format <small>日期格式化</small></h2>
+<pre class="code">
+Date.prototype.Format = function (formatStr/*Date String*/) {
+    var str = formatStr;
+    var week = ['日', '一', '二', '三', '四', '五', '六'];
+    str = str.replace(/yyyy|YYYY/, this.getFullYear());
+    str = str.replace(/yy|YY/, (this.getYear() % 100) > 9 ? (this.getYear() % 100).toString() : '0' + (this.getYear() % 100));
+    str = str.replace(/MM/, (this.getMonth() + 1) > 9 ? (this.getMonth() + 1).toString() : '0' + (this.getMonth() + 1));
+    str = str.replace(/M/g, (this.getMonth() + 1));
+    str = str.replace(/w|W/g, week[this.getDay()]);
+    str = str.replace(/dd|DD/, this.getDate() > 9 ? this.getDate().toString() : '0' + this.getDate());
+    str = str.replace(/d|D/g, this.getDate());
+    str = str.replace(/hh|HH/, this.getHours() > 9 ? this.getHours().toString() : '0' + this.getHours());
+    str = str.replace(/h|H/g, this.getHours());
+    str = str.replace(/mm/, this.getMinutes() > 9 ? this.getMinutes().toString() : '0' + this.getMinutes());
+    str = str.replace(/m/g, this.getMinutes());
+    str = str.replace(/ss|SS/, this.getSeconds() > 9 ? this.getSeconds().toString() : '0' + this.getSeconds());
+    str = str.replace(/s|S/g, this.getSeconds());
+    return str;
+}
+</pre>
+<h2 class="page-header">getObjectURL  <small>获取file表单项的url</small></h2>
+<pre class="code">
+//js代码
+function getObjectURL(elm/*element*/) {
+    try {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(elm);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(elm);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(elm);
+        }
+        return url;
+    } catch (e) {
+        return '';
+    }
+};
+//调用方法
+/* 
+<input type="file" name="thumbnail-file" id="thumbnail-file" multiple="multiple" data-previewtarget="#thumbnail-preview" class="fileinput-button" />
+*/
+$(document).on('change', '#thumbnail-file', function () {
+    var objUrl = $.getObjectURL(this.files[0]);
+    if (objUrl === null) {
+        objUrl = 'no-pic.gif';
+    }
+    if (objUrl) {
+        $($(this).data('previewtarget')).attr("src", objUrl);
+    }
+}); 
+</pre>
 	
 					</div>					
 				</div>
@@ -229,7 +286,7 @@ function toFixed(value/*String|Number*/, preciseFigures/*Number*/, def/*String*/
 			<dd>
 				<ul class="unstyled">
 					
-					<li><a href="/category/index.html#cat=javascript">javascript <span class="badge">1</span></a></li>
+					<li><a href="/category/index.html#cat=javascript">javascript <span class="badge">4</span></a></li>
 					
 					
 				</ul>
@@ -239,7 +296,11 @@ function toFixed(value/*String|Number*/, preciseFigures/*Number*/, def/*String*/
 				<ul class="unstyled">
 					
 					<li>
-						<a href="/tag/index.html#tag=javascript">javascript <span class="badge">1</span></a>
+						<a href="/tag/index.html#tag=javascript">javascript <span class="badge">2</span></a>
+					</li>
+					
+					<li>
+						<a href="/tag/index.html#tag=ES3">ES3 <span class="badge">2</span></a>
 					</li>
 													
 				</ul>

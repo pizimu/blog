@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/css/theme.css">
+	<title>为ES3添加Array在ES5的新方法</title>
+</head>
+<body>
+	<div class="site">
+		<header class="clearfix" id="top">
+			<nav class="top-menu">
+	<ul class="unstyled list-inline">
+		<li><a href="/index.html">Index</a></li>
+		<li><a href="/article.html">Article</a></li>
+		<li><a href="javascript:;">Project</a></li>
+		<li><a href="javascript:;">GitHub</a></li>
+	</ul>
+</nav>
+		</header>
+		<div class="page-container clearfix">		
+			<div class="page-content-wrapper">
+				<div class="page-content">
+					<div class="page-title">
+						<h2 class="title">
+							为ES3添加Array在ES5的新方法
+						</h2>
+						<p class="label">
+							<span>tag: <i>ES3</i></span>
+							<span>category: <i>javascript</i></span>
+							<span>date: <i>23 Dec 2015</i></span>
+						</p>
+					</div>
+							
+					<div class="article-info">
+						<div class="excerpt">
+							ECMAScript5为数组增加了一些新的方法。此处为不支持ES5的浏览器做一个补充。<br />如：forEach,map,some,every,reduce等
+						</div>	
+						<pre class="code">
+(function(){
+    if(!Array.prototype.forEach){
+        var chkFn = function(fn,callback){
+            if(Object.prototype.toString.call(fn) === '[object Function]'){
+                return callback();
+            }else{
+                 throw new Error('argument[0] is not a function');
+            }
+        };
+        $.extend(Array.prototype,{
+            forEach: function(fn,context){
+                var that = this;
+                return chkFn(fn,function(){
+                    var i = 0,
+                        len = that.length;
+                    for(;i < len;i++){
+                        fn.call(context,that[i],i,that);
+                    }   
+                });           
+            },
+            map:function(fn,context){
+                var that = this;
+                return chkFn(fn,function(){
+                    var i = 0,
+                        len = that.length,
+                        newArr = [];
+                    for(;i < len;i++){
+                        newArr.push(fn.call(context,that[i],i,that));
+                    }
+                    return newArr;
+                }); 
+            },
+            some:function(fn,context){
+                var that = this;
+                return chkFn(fn,function(){
+                    var i = 0,
+                        len = that.length,
+                        output = false;
+                    for(;i < len;i++){
+                        if(fn.call(context,that[i],i,that)){
+                            output = true;
+                            break;
+                        }
+                    }
+                    return output;
+                });
+            },
+            every:function(fn,context){
+                var that = this;
+                return chkFn(fn,function(){
+                    var i=0,
+                        len = that.length,
+                        output = true;
+                    for(;i < len;i++){
+                        if(!fn.call(context,that[i],i,that)){
+                            output = false;
+                            break;
+                        }
+                    }
+                    return output;
+                });
+            },
+            reduce:function(fn,init){
+                var that = this,
+                    arrArguments = arguments;
+                return chkFn(fn,function(){
+                    var i = 0,
+                        len = that.length,
+                        sum;
+                    switch(true){
+                        case len === 0:
+                            if(arrArguments.length > 1){
+                                sum = init;
+                            }else{
+                                throw new TypeError('Reduce of empty array with no initial value');
+                            }
+                            break;
+                        case len === 1:
+                             if(arrArguments.length > 1){
+                                sum = fn.call(window,init,that[i],i,that);
+                            }else{
+                                sum = that[0];
+                            }
+                            break;
+                        default:
+                            for(;i < len;i++){                        
+                                if(i === 0){
+                                    if(arrArguments.length > 1){
+                                        sum = init;                            
+                                    }else{                            
+                                        sum = that[i++];                            
+                                    } 
+                                }                        
+                                sum = fn.call(window,sum,that[i],i,that);
+                            }
+                            
+                    }     
+                    return sum;
+                });
+            }
+        });
+    }
+})();
+</pre>
+	
+					</div>					
+				</div>
+			</div>
+			<div class="page-sidebar-wrapper">
+	<div class="page-sidebar">
+		<dl>
+			<dt>Categories</dt>
+			<dd>
+				<ul class="unstyled">
+					
+					<li><a href="/category/index.html#cat=javascript">javascript <span class="badge">4</span></a></li>
+					
+					
+				</ul>
+			</dd>
+			<dt>Tags</dt>
+			<dd>
+				<ul class="unstyled">
+					
+					<li>
+						<a href="/tag/index.html#tag=javascript">javascript <span class="badge">2</span></a>
+					</li>
+					
+					<li>
+						<a href="/tag/index.html#tag=ES3">ES3 <span class="badge">2</span></a>
+					</li>
+													
+				</ul>
+			</dd>
+		</dl>
+	</div>
+</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<footer class="page-footer">
+	<div>©  2013—2015 </div>
+</footer>
+	
+	<script src="/js/plugins/jquery-1.11.3.min.js"></script>
+	
+	<link rel="stylesheet" href="/js/plugins/laycode/laycode.css">
+	<script src="/js/plugins/laycode/laycode.js"></script>
+	<script>
+		$(function(){
+			$('.code').each(function(){
+				$(this).html($(this).html().replace(/"/g,'&#34;')
+					   .replace(/'/g,'&#39;')
+					   .replace(/</g,'&lt;')
+					   .replace(/>/g,'&gt;'))
+						.laycode();
+			});
+		});
+	</script>
+</body>
+</html>

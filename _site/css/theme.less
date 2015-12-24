@@ -234,8 +234,36 @@ a{
 			}
 		}
 		.article-info{
-			padding:10px;
+			padding:10px;	
+			.excerpt{
+				padding:10px;
+				font-size:0.75em;
+				color:#8F8585;
+				background-color: #F6F6F6;
+			}		
 		}
+
+		.page-title{
+			padding:5px 10px;
+			font-size:1em;	
+			text-align: center;
+			border-bottom:1px solid #8F8585;
+			.title{
+				font-size:1.5em;
+			}
+			.label{
+				font-size: 0.875em;
+				color:#8F8585;
+				span{
+					display: inline-block;
+					margin-right:20px;
+					i{
+						font-style: normal;
+					}
+				}
+			}
+		}
+		
 	}
 	.page-sidebar-wrapper{
 		float:right;
@@ -297,26 +325,7 @@ footer.page-footer{
 		}
 	}
 }
-.page-title{
-	padding:5px 10px;
-	font-size:1em;	
-	text-align: center;
-	border-bottom:1px dashed #8F8585;
-	.title{
-		font-size:1.5em;
-	}
-	.label{
-		font-size: 0.875em;
-		color:#8F8585;
-		span{
-			display: inline-block;
-			margin-right:20px;
-			i{
-				font-style: normal;
-			}
-		}
-	}
-}
+
 
 .page-header{
 	padding-bottom: 9px;
