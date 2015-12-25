@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>negative value</title>
+	<style>
+		body{
+			padding:10px 10% 100px 10%;
+		}
+		body *{
+			margin:0;
+			padding:0;
+		}
+		.page-header{
+			margin:10px 0;
+			line-height: 2em;
+			border-bottom:1px solid #ccc;
+		}
+		.inline{
+			background:green;
+		}
+		.block{
+			background:#ccc;
+			height:50px;
+		}
+		.clearfix:before,.clearfix:after{
+			content: " ";
+			height:0;
+			display: table;
+			clear:both;
+		}
+		.unstyled{
+			
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.red{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		.border{
+			border:2px solid red;
+		}
+		#doc-flow.negative .negative{
+			margin:-10px;
+		}
+
+		#elm-width{
+			padding:10px;
+			margin:0 auto;
+			width:60%;
+
+		}
+		#elm-width .negative{
+			height:60px;
+			background: green;
+		}
+		#elm-width.negative .negative{
+			margin-left:-100px;
+			margin-right:-100px;
+		}
+
+		#elm-float {
+			margin:0 auto;
+			width:430px;
+		}
+		
+		#elm-float ul li{
+			float:left;
+			width: 100px;
+			height: 100px;
+			margin-right:10px;
+			margin-top: 10px;
+			background: #ccc;
+		}
+		#elm-float.negative ul{
+			margin-top: -10px;
+			margin-right:-10px;
+		}
+
+		#elm-center{
+			position: relative;
+			height: 150px;
+			width:80%;
+			margin: 0 auto;
+		}
+		#elm-center.negative div{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top:-50px;
+			margin-left: -50px;
+		}
+
+		#fixed-width > *{
+			float:left;
+		}
+		#fixed-width .left{
+			width: 100px;
+			height:50px;
+			margin-left:-100%;
+			background:red;
+		}
+		#fixed-width .right{
+			width: 100px;	
+			margin-left:-100px;	
+			height:150px;	
+			background:green;
+		}
+		#fixed-width .main{
+			width:100%;
+		}
+		#fixed-width .main-body{			
+			background:blue;
+			margin:0 102px;
+			height:100px;
+		}
+		#fixed-width.negative{
+			overflow:hidden;
+		}
+		#fixed-width.negative > *,#fixed-width.negative .main-body{
+			margin-bottom:-1000px;
+			padding-bottom:1000px;
+		}
+
+	</style>
+</head>
+<body>
+<h2 class="page-header">文档流中的负边距 <button data-id="doc-flow">应用负值</button></h2>
+<div id="doc-flow">
+	<p class="block"></p>
+	<div class="negative">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam eaque, minus maiores ratione rem enim ex cumque nobis, quibusdam natus doloribus assumenda repudiandae. Id neque ut corrupti natus inventore accusantium, rerum dignissimos iusto eius cupiditate nihil consequuntur. Suscipit accusamus nesciunt adipisci. Nulla quidem consequuntur quos incidunt dignissimos at eius optio eos adipisci nobis nemo, porro quis quod nisi consectetur quaerat magnam, unde perferendis iure quia. Nam dolorum doloribus nesciunt id voluptates perspiciatis quae sit, nobis atque aliquam in magnam vero odit aperiam facilis hic, assumenda sunt <span class="inline negative">repudiandae totam molestiae delectus iste!</span> Consequuntur, eligendi, mollitia consequatur repudiandae in at libero quo.
+	</div>
+</div>
+<h2 class="page-header">对宽度的影响 <small>未设定宽度的情况下</small> <button data-id="elm-width">应用负值</button></h2>
+<div id="elm-width" class="border">
+	<div class="negative"></div>
+</div>
+<h2 class="page-header">在浮动元素中的应用  <button data-id="elm-float">应用负值</button></h2>
+<div id="elm-float" class="border">
+	<ul class="clearfix unstyled">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+<h2 class="page-header">元素在页面上居中  <button data-id="elm-center">应用负值</button></h2>
+<div id="elm-center" class="border">
+	<div class="red"></div>
+</div>
+
+<h2 class="page-header">固定栏目与自适应 <button data-id="fixed-width">应用等高</button></h2>
+
+<div id="fixed-width" class="border clearfix">
+	<div class="main">
+		<div class="main-body"></div>
+	</div>
+	<div class="left"></div>
+	<div class="right"></div>
+</div>
+
+<script>
+	var btns = document.getElementsByTagName('button');
+	for(var i=0,j=btns.length;i<j;i++){
+		btns[i].onclick = function(){
+			if(!this.dataset.id) return;
+			this.negative = !this.negative;
+			
+			if(this.dataset.id === 'fixed-width'){
+				this.innerText=this.negative ? '取消等高' : '应用等高';
+			}else{
+				this.innerText=this.negative ? '取消负值' : '应用负值';
+			}
+			document.getElementById(this.dataset.id).classList.toggle('negative');
+		};
+	}
+	
+</script>
+</body>
+</html>

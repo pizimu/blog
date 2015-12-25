@@ -157,7 +157,7 @@
 	<div class="red"></div>
 </div>
 
-<h2 class="page-header">固定栏目与自适应 <button data-id="fixed-width">应用负值</button></h2>
+<h2 class="page-header">固定栏目与自适应 <button data-id="fixed-width">应用等高</button></h2>
 
 <div id="fixed-width" class="border clearfix">
 	<div class="main">
@@ -173,7 +173,12 @@
 		btns[i].onclick = function(){
 			if(!this.dataset.id) return;
 			this.negative = !this.negative;
-			this.innerText=this.negative ? '取消负值' : '应用负值';
+			
+			if(this.dataset.id === 'fixed-width'){
+				this.innerText=this.negative ? '取消等高' : '应用等高';
+			}else{
+				this.innerText=this.negative ? '取消负值' : '应用负值';
+			}
 			document.getElementById(this.dataset.id).classList.toggle('negative');
 		};
 	}

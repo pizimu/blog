@@ -1,18 +1,48 @@
----
-layout: blog-info
-title: 负边距（negative margin）在页面布局中的应用
-tags: [css]
-categories: [2015-12]
-excerpt: css中的负边距(negative margin)是布局中的一个常用技巧，只要运用得合理常常会有意想不到的效果。
----
-<p class="tips">
-	实例代码：<a href="{{site.baseurl}}/lab/negative-margin/index.html" target="_blank">点击查看</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/css/theme.css">
+	<title>负边距（negative margin）在页面布局中的应用</title>
+</head>
+<body>
+	<div class="site">
+		<header class="clearfix" id="top">
+			<nav class="top-menu">
+	<ul class="unstyled list-inline">
+		<li><a href="/index.html">Index</a></li>
+		<li><a href="/article.html">Article</a></li>
+		<li><a href="javascript:;">Project</a></li>
+		<li><a href="javascript:;">GitHub</a></li>
+	</ul>
+</nav>
+		</header>
+		<div class="page-container clearfix">		
+			<div class="page-content-wrapper">
+				<div class="page-content">
+					<div class="page-title">
+						<h2 class="title">
+							负边距（negative margin）在页面布局中的应用
+						</h2>
+						<p class="label">
+							<span>tag: <i>css</i></span>
+							<span>category: <i>2015-12</i></span>
+							<span>date: <i>24 Dec 2015</i></span>
+						</p>
+					</div>
+							
+					<div class="article-info">
+						<div class="excerpt">
+							css中的负边距(negative margin)是布局中的一个常用技巧，只要运用得合理常常会有意想不到的效果。
+						</div>	
+						<p class="tips">
+	实例代码：<a href="/lab/negative-margin/index.html" target="_blank">点击查看</a>
 </p>
 <h2 class="page-header">负边距在普通文档流中的作用</h2>
 <p>对于那些没有脱离文档流的元素，其在页面上的位置是随着文档流的变化而变化的。如图：</p>
-<img src="{{site.baseurl}}/image/negative-margin/doc-flow-old.gif" alt="">
+<img src="/image/negative-margin/doc-flow-old.gif" alt="">
 <p>负边距会将这些元素在文档流中的位置发生偏移，放弃偏移前占据的空间，这样它后面的文档流中的其它元素就会“流”过来填充这部分空间：例如：将块状元素及它的行内元素设置负边距 margin:-10px;</p>
-<img src="{{site.baseurl}}/image/negative-margin/doc-flow-new.gif" alt="">
+<img src="/image/negative-margin/doc-flow-new.gif" alt="">
 <p>看起来像是减小元素在文档流中的尺寸一样，事实上，它的尺寸并没变，只是文档流在计算文件位置的时候，会认为负边距把元素尺寸减小了，因此位置也就发生了变化。</p>
 <p>需要注意的是，文档流只能是后面流向前端，即文档流只能向左或向上流动，不能向下或右流动。</p>
 <p>比如，一个没有设定高度的块状元素，其高度是自动的，具体来说就是由它里面的文档流最后的位置决定的。假设它里面有一个出于文档流中的子元素，高度为100px;那这时这个父元素的高度就等于子元素的高度100px了，如果子元素继续增高，那么父元素也会跟着增高。可是如果这时子元素设一个负的margin-bottom,比如-20px，因为负边距会影响到文档流，本来文档流的高度是从父元素的最顶端到子元素的最底端这段高度，现在子元素有一个margin-bottom:-20px;就相当于文档流要向上退后20px,这样整个文档流的高度就减少了20px了，那么父元素的高度也会跟着减少20px。在IE8+以及那些标准浏览器中，这还需要父元素拥有一个overflow:hidden的属性，因为父元素的高度变了，但子元素的高度并没有变，所以需要使子元素超出隐藏，但即使不设置overflow:hidden，父元素的高度也是变小了的，只不过这时子元素的高度会超出父元素。在IE6中则不需要，但需要触发它的hasLayout属性。所以以前所说的多列等高布局就是利用这个原理来实现的。</p>
@@ -21,13 +51,13 @@ excerpt: css中的负边距(negative margin)是布局中的一个常用技巧，
 
 <h2 class="page-header">左和右的负边距对元素宽度的影响</h2>
 <p>当元素没有设置宽度时（width:auto是可以的），使用负边距可以增加元素的宽度。如图，被包裹在一个设置了宽度div的绿色块：</p>
-<img src="{{site.baseurl}}/image/negative-margin/elm-width-old.gif" alt="">
+<img src="/image/negative-margin/elm-width-old.gif" alt="">
 <p>现在给它设置 margin-left:-100px; margin-right:-100px</p>
-<img src="{{site.baseurl}}/image/negative-margin/elm-width-new.gif" alt="">
+<img src="/image/negative-margin/elm-width-new.gif" alt="">
 <p>它的宽度变得更宽了</p>
 <h3>它的用途</h3>
 <p>创建一个左右靠边，中间等宽间隔的列表效果如图</p>
-<img src="{{site.baseurl}}/image/negative-margin/elm-float.gif" alt="">
+<img src="/image/negative-margin/elm-float.gif" alt="">
 <p>以往的实现是在向所有元素添加正向的margin-right,将靠右边界的那些子元素添加一个class，把它的margin-right设为0。但这样一下当这些子元素是动态输出的时候，在循环时就得判断哪些子元素是靠右边界的，然后加上class,比较麻烦。所以解决方案就是加大子元素父元素的宽度，让它有足够的宽度容纳一行需要的子元素，然后在最外面的容器设一个overflow:hidden。上面的负的左右边距能加大元素的宽度，所以给子元素的父容器设一个合适的负的margin-right就可以了。</p>
 <pre class="code">
 <style>
@@ -52,11 +82,72 @@ excerpt: css中的负边距(negative margin)是布局中的一个常用技巧，
 
 <h2 class="page-header">负边距对浮动元素的影响</h2>
 <p>负边距对浮动元素的影响与负边距对文档流的影响是差不多的。利用负边距，我们可以做一些多列自适应宽度的列表效果</p>
-<img src="{{site.baseurl}}/image/negative-margin/fixed-width-old.gif" alt="">
+<img src="/image/negative-margin/fixed-width-old.gif" alt="">
 <p><strong>多列等高：</strong>此例关键是给每列设置最大的底部内边距，然后用数值相似的负外边距消除这个高度。这会导致每一列溢出容器元素，如果把外包容器的overflow设置为hidden,列就在最高点被裁切。</p>
-<img src="{{site.baseurl}}/image/negative-margin/fixed-width-new.gif" alt="">
+<img src="/image/negative-margin/fixed-width-new.gif" alt="">
 
 <h2 class="page-header">负边距对绝对定位元素的影响</h2>
 <p>绝对定位的元素的top,right,bottom,left等值是元素自身的边界到最近的已定位的祖先元素的距离，这个元素自身的边界指的就是margin定义的边界，所以，所果margin为正的时候，它的边界是向外扩的，如果margin为负的时候，则它的边界是向里收的。利用这点，就可以做绝对定位来居中：</p>
-<img src="{{site.baseurl}}/image/negative-margin/elm-center.gif" alt="">
+<img src="/image/negative-margin/elm-center.gif" alt="">
 <p>缺点是必须要知道居中元素的宽度和高度</p>
+	
+					</div>					
+				</div>
+			</div>
+			<div class="page-sidebar-wrapper">
+	<div class="page-sidebar">
+		<dl>
+			<dt>Categories</dt>
+			<dd>
+				<ul class="unstyled">
+					
+					<li><a href="/category/index.html#cat=2015-12">2015-12 <span class="badge">4</span></a></li>
+					
+					
+				</ul>
+			</dd>
+			<dt>Tags</dt>
+			<dd>
+				<ul class="unstyled">
+					
+					<li>
+						<a href="/tag/index.html#tag=javascript">javascript <span class="badge">1</span></a>
+					</li>
+					
+					<li>
+						<a href="/tag/index.html#tag=ES3">ES3 <span class="badge">2</span></a>
+					</li>
+					
+					<li>
+						<a href="/tag/index.html#tag=css">css <span class="badge">1</span></a>
+					</li>
+													
+				</ul>
+			</dd>
+		</dl>
+	</div>
+</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<footer class="page-footer">
+	<div>©  2013—2015 </div>
+</footer>
+	
+	<script src="/js/plugins/jquery-1.11.3.min.js"></script>
+	
+	<link rel="stylesheet" href="/js/plugins/laycode/laycode.css">
+	<script src="/js/plugins/laycode/laycode.js"></script>
+	<script>
+		$(function(){
+			$('.code').each(function(){
+				$(this).html($(this).html().replace(/"/g,'&#34;')
+					   .replace(/'/g,'&#39;')
+					   .replace(/</g,'&lt;')
+					   .replace(/>/g,'&gt;'))
+						.laycode();
+			});
+		});
+	</script>
+</body>
+</html>
