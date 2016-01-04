@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>一个写在前端的定时任务</title>
+	<style>
+		div{
+			float:left;
+			padding:3px 5px;
+			margin-left:20px;
+			border:1px solid #ccc;
+			background:#ccc;
+			border-radius:4px;
+		}
+		div.active{
+			background: yellow;
+			
+		}
+	</style>
+	<script>
+		function timingTasks(opts){
+			opts = $.extend({
+				callback:false, //get time and to do something
+				tasks:[], //tasks list
+				ridWeekend:true, //if not do when weekend
+				daily:true // to do for everyday
+			},opts);
+			var serverTime = function(){ 
+					//Access to the server time, avoid the client modification time
+					//However, no eggs
+					var dtd = $.Deferred();
+					// get server time
+					dtd.resolve(new Date().getTime());
+
+					return dtd.promise();
+				},
+				getTimeInterval = function(time){
+					var today = new Date(time),
+						timeNow = today.getTime(),
+						day = today.getDay(),
+						interval = [],
+						nextTime,
+						dayMS = 24 * 60 * 60 * 1000;
+					
+					if(opts.daily){	
+						if(opts.ridWeekend){
+							switch(true){
+								case day === 5:
+									interval = opts.tasks;
+									interval.push($.extend(true,{},opts.tasks[0]),{
+										time:interval[0].time + dayMS * 3
+									});
+									break;
+								case day === 6:
+									interval.push($.extend(true,{},opts.tasks[0]),{
+										time:interval[0].time + dayMS * 2
+									});
+									break;
+								case day === 0:
+									interval.push($.extend(true,{},opts.tasks[0]),{
+										time:interval[0].time + dayMS
+									});
+									break;
+								default:
+									interval = opts.tasks;
+									interval.push($.extend(true,{},opts.tasks[0]),{
+										time:interval[0].time + dayMS
+									});
+							}
+						}else{
+							interval.push($.extend(true,{},opts.tasks[0]),{
+								time:interval[0].time + dayMS
+							});
+						}
+					}
+
+					for(var i = 0,len = interval.length; i < len; i++){
+						if(timeNow <= interval[i].time){
+							nextTime = interval[i];
+							nextTime.interval = interval[i].time - timeNow;
+							break;
+						}
+					}
+					return nextTime;
+				},
+				timeChange = function(){
+					$.when(serverTime()).then(function(serverTime){
+						var nextTime = getTimeInterval(serverTime);
+						if(!nextTime) return;
+						setTimeout(function(){
+							timeChange();
+							opts.callback && opts.callback(nextTime);
+						},nextTime.interval);						
+					});
+				};
+			timeChange();
+		};
+	</script>
+</head>
+<body>
+	<div id="time1"><span>10</span>秒后开始</div>
+	<div id="time2"><span>30</span>秒后开始</div>
+	<script src="/blog/js/plugins/jquery-1.11.3.min.js"></script>
+	<script>
+		$(function(){
+			var $time1 = $('#time1'),
+				$time2 = $('#time2'),
+				timer = function($id){
+					var $time = $('span',$id);
+					var _timer = setInterval(function(){										
+						$time.text($time.text() - 1);
+						if($time.text() == 0) clearInterval(_timer);
+					},1000);				
+				};
+			timer($time1);
+			timer($time2);
+
+			var nowTime = new Date().getTime();
+			timingTasks({
+				tasks:[{
+					 time:new Date().getTime() + 1000 * 10,
+                     type:'begin',
+                     id:'time1'
+				},
+				{
+					 time:new Date().getTime() + 1000 * 20,
+                     type:'end',
+                     id:'time1'
+				},
+				{
+					 time:new Date().getTime() + 1000 * 30,
+                     type:'begin',
+                     id:'time2'
+				},
+				{
+					 time:new Date().getTime() + 1000 * 40,
+                     type:'end',
+                     id:'time2'
+				}],
+				callback:function(obj){
+					if(obj.type==='begin'){
+						$('#' + obj.id).addClass('active').html('<span>10</span>秒后关闭');
+						timer($('#' + obj.id));
+					}else{
+						$('#' + obj.id).removeClass('active').html('明天再来执行吧');
+					}
+
+				}
+			});
+		});
+	</script>
+	
+</body>
+</html>

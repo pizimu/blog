@@ -1,0 +1,43 @@
+---
+layout: blog-info
+title: 一个做在前端的定时任务
+tags: [plugins]
+categories: [2015-12]
+excerpt: 写在前端的定时任务，选择在什么时候去执行方法，而不是一直setInterval去判断。
+---
+<p class="tips">
+	实例代码：<a href="{{site.baseurl}}/lab/timing-tasks/index.html" target="_blank">点击查看</a>
+</p>
+<pre class="code">
+/*
+ *前端定时任务
+ * 不支持同一时间多个任务
+ * 如需使用服务器时间，请修改 serverTime方法，以获取服务器时间
+*/
+timingTasks({
+  /*
+   *任务列表 list
+   *参数
+   *  time:执行请求时间
+   *  可添加其它参数，做为调用callback方法时的标示，如
+   *  	type:'begin',
+   *  	id:'time1'
+  */
+  tasks:[],
+  /*
+   *回调函数
+   *当到达时间时，执行回调函数
+   *参数
+   * obj:tasks中，time在当前时间的选项
+  */
+  callback:function(obj){},
+  /*
+   *周末不执行
+  */
+  ridWeekend:true,
+  /*
+   *是否每日任务，可与ridWeekend混合使用
+  */
+daily:true
+});
+</pre>
