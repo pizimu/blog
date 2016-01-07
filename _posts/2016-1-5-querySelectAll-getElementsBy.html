@@ -1,0 +1,30 @@
+---
+layout: blog-info
+title: querySelectAll与getElement[s]系列方法的区别
+tags: [javascript]
+categories: [2016-1]
+excerpt: querySelectorAll 属于 W3C 中的 Selectors API 规范 [1]。而 getElementsBy 系列则属于 W3C 的 DOM 规范 [2]。<br />在性能上，getElementBy系列的执行速度基本都是querySelectorAll的100+倍。
+---
+<h3 class="page-header">1. W3C 标准</h3>
+<p>querySelectorAll 属于 W3C 中的 Selectors API 规范 [1]。而 getElementsBy 系列则属于 W3C 的 DOM 规范 [2]。</p>
+
+<h3 class="page-header">2. 浏览器兼容</h3>
+<p>querySelectorAll 已被 IE 8+、FF 3.5+、Safari 3.1+、Chrome 和 Opera 10+ 良好支持 。getElementsBy 系列，以最迟添加到规范中的 getElementsByClassName 为例，IE 9+、FF 3 +、Safari 3.1+、Chrome 和 Opera 9+ 都已经支持该方法了。</p>
+
+<h3 class="page-header">3. 接收参数</h3>
+<p>querySelectorAll 方法接收的参数是一个 CSS 选择符。而 getElementsBy 系列接收的参数只能是单一的className、tagName 和 name。代码如下:</p>
+<pre class="code">
+var c1 = document.querySelectorAll('.b1 .c');
+var c2 = document.getElementsByClassName('c');
+var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
+</pre>
+
+<h3 class="page-header">4. 返回值</h3>
+<p>querySelectorAll 返回的是一个 Static Node List，而 getElementsBy 系列的返回的是一个 Live Node List</p>
+<p>在 W3C 规范中对 querySelectorAll 方法有明确规定:</p>
+<blockquote>
+The NodeList object returned by the querySelectorAll() method must be static ([DOM], section 8).
+</blockquote>
+
+<h3 class="page-header">5.执行速度</h3>
+<p>getElementBy系列的执行速度基本都是querySelectorAll的100+倍</p>
