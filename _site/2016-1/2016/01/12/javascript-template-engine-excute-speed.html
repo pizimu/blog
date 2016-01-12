@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/theme.css">
-	<title>一个做在前端的定时任务</title>
+	<title>javascript模版引擎渲染数据速度测试</title>
 </head>
 <body>
 	<div class="site">
@@ -22,55 +22,22 @@
 				<div class="page-content">
 					<div class="page-title">
 						<h2 class="title">
-							一个做在前端的定时任务
+							javascript模版引擎渲染数据速度测试
 						</h2>
 						<p class="label">
-							<span>tag: <i>plugins</i></span>
-							<span>category: <i>2015-12</i></span>
-							<span>date: <i>31 Dec 2015</i></span>
+							<span>tag: <i>javascripttemplate</i></span>
+							<span>category: <i>2016-1</i></span>
+							<span>date: <i>12 Jan 2016</i></span>
 						</p>
 					</div>
 							
 					<div class="article-info">
 						<div class="excerpt">
-							写在前端的定时任务，选择在什么时候去执行方法，而不是一直setInterval去判断。
+							建议在拥有 v8 javascript 引擎的 chrome 浏览器上进行测试，避免浏览器停止响应<br />测试引擎：artTemplate; juicer; doT; Handlebars; etpl; tmpl; easyTemplate; underscoreTemplate; baiduTemplate; Mustache; jsrender; kissyTemplate;
 						</div>	
-						<p class="tips">
-	实例代码：<a href="/lab/timing-tasks/index.html" target="_blank">点击查看</a>
-</p>
-<pre class="code">
-/*
- *前端定时任务
- * 不支持同一时间多个任务
- * 如需使用服务器时间，请修改 serverTime方法，以获取服务器时间
-*/
-timingTasks({
-  /*
-   *任务列表 list
-   *参数
-   *  time:执行请求时间
-   *  可添加其它参数，做为调用callback方法时的标示，如
-   *  	type:'begin',
-   *  	id:'time1'
-  */
-  tasks:[],
-  /*
-   *回调函数
-   *当到达时间时，执行回调函数
-   *参数
-   * obj:tasks中，time在当前时间的选项
-  */
-  callback:function(obj){},
-  /*
-   *周末不执行
-  */
-  ridWeekend:true,
-  /*
-   *是否每日任务，可与ridWeekend混合使用
-  */
-daily:true
-});
-</pre>	
+						<script>
+	window.location.href='/lab/javascript-template-engine/index.html';
+</script>	
 					</div>					
 				</div>
 			</div>
