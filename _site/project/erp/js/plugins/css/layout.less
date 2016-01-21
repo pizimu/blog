@@ -1,0 +1,168 @@
+@red:#d91e18;
+body{
+	background-color: #3d3d3d;
+	font-size:87.5%;
+	font-family: '微软雅黑';
+}
+.panel,
+.panel-heading,
+.navbar,
+.btn,
+.dropdown-menu,
+.label
+{
+	border-radius: 0;
+}
+
+.page-siderbar-wrapper{
+	height:0;
+	background:#ccc;
+	.page-sidebar{
+		position:relative;
+		float:left;
+		width:235px;
+		margin-right:-100%;
+		background-color: #3d3d3d;
+		z-index: 999;
+		.page-sidebar-menu{
+			margin:0;
+			padding:0;
+			.sidebar-toggler-wrapper{
+				overflow:hidden;
+				.sidebar-toggler{
+					float:right;
+					margin:20px;					
+				}
+
+			}
+			li{
+				list-style:none;
+				a{
+					display: block;
+					color:#bdbdbd;
+				}				
+			}
+			>li{
+				>a{
+					padding:10px 15px;	
+					border-top:1px solid #484848;
+				}
+			}
+		}		
+	}
+}
+
+.page-content-wrapper{
+	float:left;
+	width:100%;
+	.page-content{
+		margin-left:235px;
+		padding:15px 10px 10px;
+		background-color: #fff;
+	}
+}
+
+.sidebar-toggler{
+	width: 30px;
+	height: 27px;
+
+	//background: url(/images/sidebar_inline_toggler_icon_default.jpg) 0 0 no-repeat;
+	background: url(../../../images/sidebar_inline_toggler_icon_default.jpg) 0 0 no-repeat;
+	cursor: pointer;
+}
+.no-page-sidebar{
+	.page-content-wrapper{
+		.page-content{
+			margin-left:25px;
+			transition:margin 0.2s;
+		}
+	}
+}
+.page-sidebar-closed{
+	.page-content-wrapper{
+		.page-content{
+			margin-left:45px;
+			transition:margin 0.2s;
+		}
+	}
+	.page-siderbar-wrapper{
+		.page-sidebar{
+			width:45px;
+			margin-right:-100%;
+			.page-sidebar-menu{
+				.sidebar-toggler-wrapper{
+					.sidebar-toggler{
+						margin:20px 10px;					
+					}
+
+				}
+				>li{
+					>a{
+						.title{
+							display:none;
+						}
+					}
+					>ul{
+						display:none;
+					}
+				}
+			}
+		}
+		
+	}
+}
+@media (max-width:992px){
+	
+}
+
+
+.panel{
+	.panel-heading{
+		position: relative;
+		padding:5px 10px;
+		>*{
+			display:inline-block;
+		}
+		.panel-title{
+			display: inline-block;
+			font-size:1em;
+			line-height: 1.5em;
+		}
+		.tools{
+			float: right;
+			display:inline-block;
+			>a{
+				display: inline-block;
+				color:#fff;
+			}
+		}		
+	}
+}
+
+.tabbable-custom{
+	margin-bottom: 15px;
+
+	>.nav-tabs{
+		>li{
+			>a{
+				border-radius:0;
+			}
+			>a:hover{
+				background-color:transparent;
+				border-color: transparent;
+			}
+		}
+		>li.active{
+			>a{
+				border-color:#ddd;
+				border-bottom-color: #fff;
+				border-top:2px solid @red;
+			}		
+		}
+	}
+	>.tab-content{
+		padding:10px;
+		margin-top:-1px;
+		border:1px solid #ddd;
+	}
+}
