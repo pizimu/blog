@@ -617,7 +617,7 @@ define(['jquery'],function(require,exports,module){
         },
         beforeSend: function () {
             var me = this;
-            this.url = '/project/erp' + this.url;
+            this.url = '/blog/project/erp' + this.url;
             this.data = JSON.stringify(this.data);
             this.loadingTimer = setTimeout(function () {
                 me.loading = function () {
