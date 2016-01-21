@@ -1,5 +1,5 @@
 seajs.config({
-    base:'/project/erp/js/plugins',
+    base:'/blog/project/erp/js/plugins',
     alias:{
         jquery:'jquery/jquery-1.11.3.min.js',
         bootstrap:'bootstrap-3.3.5-dist/js/bootstrap.min.js',
