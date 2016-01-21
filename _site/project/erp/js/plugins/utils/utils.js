@@ -291,7 +291,7 @@ define(['jquery'],function(require,exports,module){
                 opts.callback && opts.callback();
             };
         $.ajax({
-            url:'/hardcode/remark.json',
+            url:'/hardcode/remark.js',
             data:{
                 id:opts.id
             },
@@ -591,7 +591,8 @@ define(['jquery'],function(require,exports,module){
         global: true,
         //type: 'POST',
         type: 'get',
-        dataType: 'json',
+        //dataType: 'json',
+        dataType:'script',
         processData: false,
         contentType: 'application/json',
         timeout: 1800000,

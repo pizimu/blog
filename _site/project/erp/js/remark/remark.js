@@ -9,6 +9,8 @@ seajs.use(['jquery','artDialog','bootstrap','jsviews','toastr','toastrCss','them
 			id:id
 		},
 		success:function(result){
+			result = window.ajaxResult;
+			delete window.ajaxResult;
 			if(result.status === 'success'){
 				var html = $.templates('#list-tmpl').render(result.data);
 				$('.scroller').html(html);

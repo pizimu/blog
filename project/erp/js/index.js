@@ -30,7 +30,7 @@ seajs.use(['jquery','artDialog','bootstrap','jsviews','toastr','toastrCss','them
         $('#site-tab>.nav-tabs>li:first a').tab('show');
         $.search = new $.PageSearch({
             tabs: ['#site-tab>.nav-tabs'],
-            url: '/hardcode/ebay.json',
+            url: '/hardcode/ebay.js',
             parseData:function(dataList){
                 dataList.forEach(function(item){
                     listId.push(item.id);
@@ -451,12 +451,14 @@ function setDescribe(data){
             dtd = $.Deferred();
 
             $.ajax({
-                url: '/hardcode/describe.json',
+                url: '/hardcode/describe.js',
                 data: {
                     warehouseId: warehouseId,
                     siteId: siteId
                 },
                 success: function (result) {
+                    result = window.ajaxResult;
+                    delete window.ajaxResult;
                     if (result.status === 'success') {
                         $.page.descTemplateData[key] = result.data;
                         dtd.resolve(result.data);
@@ -533,12 +535,14 @@ function setTransport(data){
             }
             var dtd = $.Deferred();
             $.ajax({
-                url: '/hardcode/transport.json',
+                url: '/hardcode/transport.js',
                 data: {
                     warehouseId: warehouseId,
                     siteId: siteId
                 },
                 success: function (result) {
+                    result = window.ajaxResult;
+                    delete window.ajaxResult;
                     if (result.status === 'success') {
                         $.page.transportModuleData[key] = result.data;
                         dtd.resolve(result.data);

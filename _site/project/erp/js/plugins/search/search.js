@@ -532,6 +532,8 @@ define(['jquery','utils'],function(require,exports,module){
 				//data:parseConditionData(this.condition.data),
 				type:'get'
 			}).done(function(result){
+				result = window.ajaxResult;
+				delete window.ajaxResult;
 				 getListData.resolve(result);
 				 return;
 				//here need to check result data

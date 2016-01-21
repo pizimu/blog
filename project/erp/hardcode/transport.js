@@ -1,4 +1,4 @@
-{
+window.ajaxResult = {
 	"status":"success",
 	"msg":"",
 	"data":{
