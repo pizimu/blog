@@ -451,7 +451,7 @@ function setDescribe(data){
             dtd = $.Deferred();
 
             $.ajax({
-                url: '/hardcode/describe.js',
+                url: '/hardcode/describe.json',
                 data: {
                     warehouseId: warehouseId,
                     siteId: siteId
@@ -535,7 +535,7 @@ function setTransport(data){
             }
             var dtd = $.Deferred();
             $.ajax({
-                url: '/hardcode/transport.js',
+                url: '/hardcode/transport.json',
                 data: {
                     warehouseId: warehouseId,
                     siteId: siteId
