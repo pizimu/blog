@@ -30,7 +30,7 @@ seajs.use(['jquery','artDialog','bootstrap','jsviews','toastr','toastrCss','them
         $('#site-tab>.nav-tabs>li:first a').tab('show');
         $.search = new $.PageSearch({
             tabs: ['#site-tab>.nav-tabs'],
-            url: '/hardcode/ebay.js',
+            url: '/hardcode/ebay.json',
             parseData:function(dataList){
                 dataList.forEach(function(item){
                     listId.push(item.id);

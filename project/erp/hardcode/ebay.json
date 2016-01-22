@@ -1,4 +1,4 @@
-window.ajaxResult = {
+{
 	"dataMeta":{
 		"pageIndex":2,
 		"pageSize":20,

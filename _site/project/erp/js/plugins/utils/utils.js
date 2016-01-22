@@ -1,4 +1,5 @@
 define(['jquery'],function(require,exports,module){
+    window.siteUrl = '/blog/project/erp';
 	$.page = $.page || {};
 	window.doc = window.document;
 	window.$doc = $(doc);
@@ -291,7 +292,7 @@ define(['jquery'],function(require,exports,module){
                 opts.callback && opts.callback();
             };
         $.ajax({
-            url:'/hardcode/remark.js',
+            url:'/hardcode/remark.json',
             data:{
                 id:opts.id
             },
@@ -591,8 +592,8 @@ define(['jquery'],function(require,exports,module){
         global: true,
         //type: 'POST',
         type: 'get',
-        //dataType: 'json',
-        dataType:'script',
+        dataType: 'json',
+        //dataType:'script',
         processData: false,
         contentType: 'application/json',
         timeout: 1800000,
@@ -617,7 +618,7 @@ define(['jquery'],function(require,exports,module){
         },
         beforeSend: function () {
             var me = this;
-            this.url = '/blog/project/erp' + this.url;
+            this.url = window.siteUrl + this.url;
             this.data = JSON.stringify(this.data);
             this.loadingTimer = setTimeout(function () {
                 me.loading = function () {
