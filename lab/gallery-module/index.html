@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AD-grid</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link href="../plugins/artDialog/css/ui-dialog.css" rel="stylesheet" type="text/css" media="none" async/>
+
+	<link rel="stylesheet" href="css/bootstrap-grid.css">
+	<link rel="stylesheet" href="css/tile.css">
+</head>
+<body>
+	<div class="container">
+		<h3 class="page-header">添加图集</h3>
+		<form action="" class="form-horizontal">
+			<div class="form-group">
+				<label for="" class="control-label col-sm-2">生成地址</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="生成的页面的路径">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="control-label col-sm-2">说明</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" rows="3" placeholder="图集说明"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="control-label col-sm-2">选择图集</label>
+				<div class="col-sm-10">
+					<button type="button" class="btn btn-info choose-tile">选择类型</button>
+					<div class="container-box">
+						
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="control-label col-sm-2"></label>
+				<div class="col-sm-10 b-top">
+					<button type="button" class="btn btn-primary">添加</button>
+					<button type="button" class="btn btn-default">取消</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<script id="tiles-tmpl" type="text/x-jsrender">
+		<div class="container">
+			<div class="tiles">
+				<div class="tile">
+					<div class="img-wrapper"><img src="img/1.jpg" /></div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper"><img src="img/2.jpg" /></div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper"><img src="img/3.jpg" /></div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper"><img src="img/4.jpg" /></div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper"><img src="img/5.jpg" /></div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper"><img src="img/6.jpg" /></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="tiles">
+				<div class="tile double">
+					<div class="img-wrapper">
+						<img src="img/double.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/5.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/6.jpg" />
+					</div>
+				</div>
+				<div class="tile double">
+					<div class="img-wrapper">
+						<img src="img/double.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="tiles">
+				<div class="tile down">
+					<div class="img-wrapper">
+						<img src="img/down.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/2.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/3.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/4.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/5.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="tiles">
+				<div class="tile double-down">
+					<div class="img-wrapper">
+						<img src="img/double-down.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/3.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/4.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="tiles">
+				<div class="tile down">
+					<div class="img-wrapper">
+						<img src="img/down.jpg" />
+					</div>
+				</div>
+				<div class="tile down">
+					<div class="img-wrapper">
+						<img src="img/down.jpg" />
+					</div>
+				</div>
+				<div class="tile down">
+					<div class="img-wrapper">
+						<img src="img/down.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="tiles">
+				<div class="tile third-down">
+					<div class="img-wrapper">
+						<img src="img/third-down.jpg" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="tiles">
+				<div class="tile down-right">
+					<div class="img-wrapper">
+						<img src="img/down.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/2.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/3.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/4.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/5.jpg" />
+					</div>
+				</div>		
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="tiles">
+				<div class="tile double-down-right">
+					<div class="img-wrapper">
+						<img src="img/double-down.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/2.jpg" />
+					</div>
+				</div>
+				<div class="tile">
+					<div class="img-wrapper">
+						<img src="img/4.jpg" />
+					</div>
+				</div>			
+			</div>
+		</div>
+	</script>
+	
+	<script type="text/x-jsrender" id="img-tmpl">
+		<form action="" class="form-horizontal">
+			<div class="form-group">
+				<label for="" class="control-label col-sm-2">展示方式</label>
+				<div class="col-sm-9">
+					<label class="radio-inline"><input type="radio" name="show-type" id='show-type-0' value="0" data-link="showType"/> 左右箭头</label>
+					<label class="radio-inline"><input type="radio" name="show-type" id='show-type-1' value="1" data-link="showType"/> 缩略图展示</label>
+					<label class="radio-inline"><input type="radio" name="show-type" id='show-type-2' value="2" data-link="showType"/> 小图标展示</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="control-label col-sm-2">标签</label>
+				<div class="col-sm-9">
+					<input type="text" maxlength="5" class="form-control inline input-sm" data-link="tag"> Tip：不填则不显示
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="control-label col-sm-2">标签颜色</label>
+				<div class="col-sm-9">
+					<label class="radio-inline"><input type="radio" name="tag-color" id='tag-color-0' value="red" data-link="tagColor"/> <span class="red tag-color"></span></label>
+					<label class="radio-inline"><input type="radio" name="tag-color" id='tag-color-1' value="green" data-link="tagColor"/> <span class="green tag-color"></span></label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="control-label col-sm-2">标签链接</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" data-link="tagUrl" placeholder="标签链接。可选">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="" class="control-label col-sm-2">图片</label>
+				<div class="col-sm-9">
+					<p class="clearfix no-margin-top">
+						图片数量：<input type="number" min="1" max="10" name="img-count" class="form-control inline input-sm" data-link="count">
+					</p>
+					<div class="img-list">
+						{^{for dataList}}
+						<div class="item row">
+							<span class="tag-number" data-link="text{:#index + 1}"></span>
+							<div class="col-sm-2">	
+								<img class="thumb-preview" data-link="src{:img}">
+								<span class="btn btn-info btn-sm fileinput-button">
+									<span>添加图片</span>
+									<input type="file" data-link="name{:'file-' + #index}" class="file-input" >
+								</span>
+							</div>
+							<div class="col-sm-9">
+								<p><input type="text" class="form-control" placeholder="标题" data-link="title"></p>
+								<p><input type="text" class="form-control" placeholder="链接" data-link="url"></p>
+								<p><textarea rows="2" class="form-control" placeholder="简介" data-link="intro"></textarea></p>
+							</div>
+							<div class="col-xs-1">
+								<button type="button" class="btn btn-warning btn-sm remove-item">移除</button>
+							</div>
+						</div>
+						{{/for}}
+					</div>
+				</div>
+			</div>
+		</form>
+	</script>
+
+	<script id="img-place-tmpl" type="text/x-jsrender">
+		<div class="img-place-wrapper">
+			<div class="img-place {{showTypeClass showType /}}">
+				{{:~showTag(tag,tagUrl,tagColor)}}				
+				<ul class="list-unstyled list">
+					{{for dataList}}
+					<li>
+						<a href="{{:url}}"><img src="{{:img}}" />
+						<div class="info">
+							<h3>{{:title}}</h3>
+							<div class="intro">{{:intro}}</div>
+						</div>
+						</a>
+					</li>
+					{{/for}}
+				</ul>
+				{{if count  > 1}}
+					{{if showType == 0 }}
+					<span class="prev"></span>
+					<span class="next"></span>
+					{{else showType == 1}}
+						<div class="button-list image">
+							{{for dataList}}
+								<span class="button"><img src="{{:img}}" /></span>
+							{{/for}}
+						</div>
+					{{else}}
+						<div class="button-list button">
+							{{for dataList}}
+								<span class="button">{{:#index + 1}}</span>
+							{{/for}}
+						</div>
+					{{/if}}
+				{{/if}}
+			</div>
+		</div>
+	</script>
+	<!-- <div class="container">
+		<div class="tiles">
+			<div class="tile blue"></div>
+			<div class="tile green"></div>
+			<div class="tile yellow"></div>
+			<div class="tile red"></div>
+			<div class="tile grey"></div>
+			<div class="tile purple"></div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="tiles">
+			<div class="tile blue double"></div>
+			<div class="tile green"></div>
+			<div class="tile yellow"></div>
+			<div class="tile red double"></div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="tiles">
+			<div class="tile blue down"></div>
+			<div class="tile green"></div>
+			<div class="tile yellow"></div>
+			<div class="tile red"></div>
+			<div class="tile grey"></div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="tiles">
+			<div class="tile blue double-down"></div>
+			<div class="tile green"></div>
+			<div class="tile yellow"></div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="tiles">
+			<div class="tile blue down"></div>
+			<div class="tile green down"></div>
+			<div class="tile yellow down"></div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="tiles">
+			<div class="tile green third-down"></div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="tiles">
+			<div class="tile blue down-right"></div>
+			<div class="tile blue"></div>
+			<div class="tile green"></div>
+			<div class="tile yellow"></div>
+			<div class="tile grey"></div>			
+		</div>
+	</div>
+	<div class="container">
+		<div class="tiles">
+			<div class="tile blue double-down-right"></div>
+			<div class="tile blue"></div>
+			<div class="tile green"></div>			
+		</div>
+	</div> -->
+
+	<script src="/blog/js/plugins/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/blog/js/plugins/jsviews-v1.0.0-alpha.min.js"></script>
+    <script type="text/javascript" src="/blog/js/plugins/artDialog/dist/dialog-plus-min.js"></script>
+    <script type="text/javascript" src="/blog/js/utils.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+	
+</body>
+</html>

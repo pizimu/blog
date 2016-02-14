@@ -52,13 +52,14 @@
 									});
 									break;
 								case day === 6:
+
 									interval.push($.extend(true,{},opts.tasks[0]),{
-										time:interval[0].time + dayMS * 2
+										time:dayMS * 2
 									});
 									break;
 								case day === 0:
 									interval.push($.extend(true,{},opts.tasks[0]),{
-										time:interval[0].time + dayMS
+										time: dayMS
 									});
 									break;
 								default:

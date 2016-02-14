@@ -16,7 +16,7 @@ define(['jquery'],function(require,exports,module){
 		}).on('click','.panel .panel-heading .tools .collapse',function(){
 			$(this)
 				.find('i').toggleClass('glyphicon-chevron-up glyphicon-chevron-down').end()
-				.closest('.panel').find('.panel-body').slideToggle();
+				.closest('.panel').find('.panel-body').stop(true,true).slideToggle();
 
 		});
 
