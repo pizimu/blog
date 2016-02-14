@@ -60,7 +60,7 @@ $(function(){
 				tagClass:'red',
 				tagUrl:'',
 				dataList:[{
-					img:'http://js.touzibaomu.com/images/soft/v20150909/no-pic.gif',
+					img:'img/no-pic.gif',
 					title:'这个是标题，哈哈哈',
 					url:'javascript:;',
 					intro:'简洁，简介，谢谢'					
