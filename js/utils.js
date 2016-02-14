@@ -1,4 +1,6 @@
 (function($){
+	window.doc = window.document;
+	$doc = $(doc);
 	$.queryToObject = function(/*String*/str){
 		var dec = decodeURIComponent,
 			qp = str.split('&'),//query parameters
