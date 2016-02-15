@@ -81,7 +81,7 @@ $(function(){
 					if(data.dataList.length < value){
 						for(i = data.dataList.length,j=value;i<j;i++){
 							$.observable(data.dataList).insert({
-								img:'http://js.touzibaomu.com/images/soft/v20150909/no-pic.gif',
+								img:'img/no-pic.gif',
 								title:'',
 								url:'javascript:;',
 								intro:''
@@ -232,6 +232,9 @@ $(function(){
 			$doc.on('click','.choose-img',function(){
 				me.currentImgPlace = $(this).parent();
 				me.chooseImg(this);
+			});
+			$('#save-code').click(function(){				
+				$('textarea').text($.templates('#code-tmpl').render({}))
 			});
 
 		}

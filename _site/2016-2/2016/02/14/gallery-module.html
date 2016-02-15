@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/css/theme.css">
-	<title>querySelectAll与getElement[s]系列方法的区别</title>
+	<title>一段生成图片集的代码</title>
 </head>
 <body>
 	<div class="site">
@@ -22,43 +22,22 @@
 				<div class="page-content">
 					<div class="page-title">
 						<h2 class="title">
-							querySelectAll与getElement[s]系列方法的区别
+							一段生成图片集的代码
 						</h2>
 						<p class="label">
 							<span>tag: <i>javascript</i></span>
-							<span>category: <i>2016-1</i></span>
-							<span>date: <i>05 Jan 2016</i></span>
+							<span>category: <i>2016-2</i></span>
+							<span>date: <i>14 Feb 2016</i></span>
 						</p>
 					</div>
 							
 					<div class="article-info">
 						<div class="excerpt">
-							querySelectorAll 属于 W3C 中的 Selectors API 规范 [1]。而 getElementsBy 系列则属于 W3C 的 DOM 规范 [2]。<br />在性能上，getElementBy系列的执行速度基本都是querySelectorAll的100+倍。
+							生成3*3图片位的图片集列表，可以自由合并，图片大小已固定，可自行合并。<br />生成代码未整理，上传图片需后端支持。
 						</div>	
-						<h3 class="page-header">1. W3C 标准</h3>
-<p>querySelectorAll 属于 W3C 中的 Selectors API 规范 [1]。而 getElementsBy 系列则属于 W3C 的 DOM 规范 [2]。</p>
-
-<h3 class="page-header">2. 浏览器兼容</h3>
-<p>querySelectorAll 已被 IE 8+、FF 3.5+、Safari 3.1+、Chrome 和 Opera 10+ 良好支持 。getElementsBy 系列，以最迟添加到规范中的 getElementsByClassName 为例，IE 9+、FF 3 +、Safari 3.1+、Chrome 和 Opera 9+ 都已经支持该方法了。</p>
-
-<h3 class="page-header">3. 接收参数</h3>
-<p>querySelectorAll 方法接收的参数是一个 CSS 选择符。而 getElementsBy 系列接收的参数只能是单一的className、tagName 和 name。代码如下:</p>
-<pre class="code">
-var c1 = document.querySelectorAll('.b1 .c');
-var c2 = document.getElementsByClassName('c');
-var c3 = document.getElementsByClassName('b2')[0].getElementsByClassName('c');
-</pre>
-
-<h3 class="page-header">4. 返回值</h3>
-<p>querySelectorAll 返回的是一个 Static Node List，而 getElementsBy 系列的返回的是一个 Live Node List</p>
-<p>在 W3C 规范中对 querySelectorAll 方法有明确规定:</p>
-<blockquote>
-The NodeList object returned by the querySelectorAll() method must be static ([DOM], section 8).
-</blockquote>
-
-<h3 class="page-header">5.执行速度</h3>
-<p>getElementBy系列的执行速度基本都是querySelectorAll的100+倍</p>
-	
+						<p class="tips">
+	实例代码：<a href="/lab/gallery-module/index.html" target="_blank">点击查看</a>
+</p>	
 					</div>					
 				</div>
 			</div>

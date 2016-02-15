@@ -62,4 +62,51 @@
 				return action[arguments[0]](arguments[1],arguments[2]);
 		}
 	};
+
+	window.dialog && $.extend(dialog.defaults, {
+        width: $(window).width() * .9,
+        height: $(window).height() * .8 - 54,
+        skin:'scroll'
+    });
+
+    $.confirm = function (opts) {
+        var dialogOption = {
+            title: '请确认：',
+            content: opts.title,
+            width: opts.width || 200,
+            height: opts.height || '',
+            onshow: function () { },
+            ok: function () {
+                if (opts.callback) opts.callback();
+            },
+            okValue: '确认',
+            cancel: function () { },
+            cancelValue: '取消'
+        };
+        opts.align && (dialogOption.align = opts.align);
+        var confirmDialog = dialog(dialogOption);
+        if (opts.elm) {
+            confirmDialog.showModal(opts.elm);
+        } else {
+            confirmDialog.showModal();
+        }
+        return false;
+    };
+      //建立一個可存取到該file的url
+    $.getObjectURL = function (file) {
+        try {
+            var url = null;
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        } catch (e) {
+            return '';
+        }
+
+    };
 })(jQuery);
