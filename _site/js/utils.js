@@ -109,4 +109,11 @@
         }
 
     };
+
+    //$.views.tags
+    $.views && $.views.tags({
+        stringify: function (data) {
+            return escape(JSON.stringify(data));
+        }
+    });
 })(jQuery);
