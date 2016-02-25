@@ -1,5 +1,5 @@
 define(['jquery'],function(require,exports,module){
-    window.siteUrl = '/project/erp';
+    window.siteUrl = '/blog/project/erp';
 	$.page = $.page || {};
 	window.doc = window.document;
 	window.$doc = $(doc);
