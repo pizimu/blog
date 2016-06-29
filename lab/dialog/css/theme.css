@@ -1,0 +1,258 @@
+.ZSdialog-show {
+  min-width: 300px;
+}
+.ZSdialog-show .zs-dialog {
+  opacity: 1;
+  transform: scale(1);
+}
+.zs-dialog {
+  position: relative;
+  padding: 1px;
+  border: 2px solid #000;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transform: scale(0);
+  transition: 0.15s;
+}
+.zs-dialog-header {
+  position: relative;
+  height: 30px;
+  font-size: 14px;
+  font-weight: bold;
+  text-indent: 1em;
+  line-height: 1;
+  border-bottom: #929292 1px solid;
+  background-color: #ccc;
+}
+.zs-dialog-close {
+  position: absolute;
+  right: 3px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 50px;
+  opacity: 0.4;
+}
+.zs-dialog-close:hover {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+.zs-dialog-grid {
+  width: 100%;
+  margin: 0;
+  border: 0 auto;
+  background: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.zs-dialog-body {
+  padding: 20px;
+  text-align: center;
+}
+.zs-dialog-content {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  text-align: left;
+}
+.zs-dialog-footer {
+  padding: 0 0 20px;
+  text-align: center;
+}
+.zs-dialog-footer button {
+  width: auto;
+  overflow: visible;
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  _margin-left: 5px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  user-select: none;
+  outline: none;
+  color: #fff;
+  background-color: #999;
+}
+.zs-dialog-footer button + button {
+  margin-left: 5px;
+}
+.zs-dialog-footer button:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.zs-dialog-footer button:disabled {
+  color: #efefef;
+  background-color: #c5c5c5;
+}
+.zs-dialog-footer button.zs-dialog-autofocus,
+.zs-dialog-footer button.zs-dialog-autofocus:active {
+  background-color: #e33057;
+}
+.ZSdialog-top-left .zs-dialog,
+.ZSdialog-top .zs-dialog,
+.ZSdialog-top-right .zs-dialog {
+  top: -8px;
+}
+.ZSdialog-bottom-left .zs-dialog,
+.ZSdialog-bottom .zs-dialog,
+.ZSdialog-bottom-right .zs-dialog {
+  top: 8px;
+}
+.ZSdialog-left-top .zs-dialog,
+.ZSdialog-left .zs-dialog,
+.ZSdialog-left-bottom .zs-dialog {
+  left: -8px;
+}
+.ZSdialog-right-top .zs-dialog,
+.ZSdialog-right .zs-dialog,
+.ZSdialog-right-bottom .zs-dialog {
+  left: 8px;
+}
+.zs-dialog-arrow-a,
+.zs-dialog-arrow-b {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  line-height: 0;
+  font-size: 0;
+  _color: #FF3FFF;
+  _filter: chroma(color=#FF3FFF);
+}
+.ZSdialog-top-left .zs-dialog-arrow-a,
+.ZSdialog-top .zs-dialog-arrow-a,
+.ZSdialog-top-right .zs-dialog-arrow-a {
+  bottom: -8px;
+  border-top: 8px solid #000;
+  border-bottom: 0 none;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+.ZSdialog-top-left .zs-dialog-arrow-b,
+.ZSdialog-top .zs-dialog-arrow-b,
+.ZSdialog-top-right .zs-dialog-arrow-b {
+  bottom: -6px;
+  border-top: 8px solid #fff;
+  border-bottom: 0 none;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+.ZSdialog-top-left .zs-dialog-arrow-a,
+.ZSdialog-top-left .zs-dialog-arrow-b {
+  left: 15px;
+}
+.ZSdialog-top .zs-dialog-arrow-a,
+.ZSdialog-top .zs-dialog-arrow-b {
+  left: 50%;
+  margin-left: -8px;
+}
+.ZSdialog-top-right .zs-dialog-arrow-a,
+.ZSdialog-top-right .zs-dialog-arrow-b {
+  right: 15px;
+}
+.ZSdialog-bottom-left .zs-dialog-arrow-a,
+.ZSdialog-bottom .zs-dialog-arrow-a,
+.ZSdialog-bottom-right .zs-dialog-arrow-a {
+  top: -8px;
+  border-bottom: 8px solid #000;
+  border-top: 0 none;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+.ZSdialog-bottom-left .zs-dialog-arrow-b,
+.ZSdialog-bottom .zs-dialog-arrow-b,
+.ZSdialog-bottom-right .zs-dialog-arrow-b {
+  top: -6px;
+  border-bottom: 8px solid #fff;
+  border-top: 0 none;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+.ZSdialog-bottom-left .zs-dialog-arrow-a,
+.ZSdialog-bottom-left .zs-dialog-arrow-b {
+  left: 15px;
+}
+.ZSdialog-bottom .zs-dialog-arrow-a,
+.ZSdialog-bottom .zs-dialog-arrow-b {
+  margin-left: -8px;
+  left: 50%;
+}
+.ZSdialog-bottom-right .zs-dialog-arrow-a,
+.ZSdialog-bottom-right .zs-dialog-arrow-b {
+  right: 15px;
+}
+.ZSdialog-left-top .zs-dialog-arrow-a,
+.ZSdialog-left .zs-dialog-arrow-a,
+.ZSdialog-left-bottom .zs-dialog-arrow-a {
+  right: -8px;
+  border-left: 8px solid #000;
+  border-right: 0 none;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+.ZSdialog-left-top .zs-dialog-arrow-b,
+.ZSdialog-left .zs-dialog-arrow-b,
+.ZSdialog-left-bottom .zs-dialog-arrow-b {
+  right: -6px;
+  border-left: 8px solid #fff;
+  border-right: 0 none;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+.ZSdialog-left-top .zs-dialog-arrow-a,
+.ZSdialog-left-top .zs-dialog-arrow-b {
+  top: 15px;
+}
+.ZSdialog-left .zs-dialog-arrow-a,
+.ZSdialog-left .zs-dialog-arrow-b {
+  margin-top: -8px;
+  top: 50%;
+}
+.ZSdialog-left-bottom .zs-dialog-arrow-a,
+.ZSdialog-left-bottom .zs-dialog-arrow-b {
+  bottom: 15px;
+}
+.ZSdialog-right-top .zs-dialog-arrow-a,
+.ZSdialog-right .zs-dialog-arrow-a,
+.ZSdialog-right-bottom .zs-dialog-arrow-a {
+  left: -8px;
+  border-right: 8px solid #000;
+  border-left: 0 none;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+.ZSdialog-right-top .zs-dialog-arrow-b,
+.ZSdialog-right .zs-dialog-arrow-b,
+.ZSdialog-right-bottom .zs-dialog-arrow-b {
+  left: -6px;
+  border-right: 8px solid #fff;
+  border-left: 0 none;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+.ZSdialog-right-top .zs-dialog-arrow-a,
+.ZSdialog-right-top .zs-dialog-arrow-b {
+  top: 15px;
+}
+.ZSdialog-right .zs-dialog-arrow-a,
+.ZSdialog-right .zs-dialog-arrow-b {
+  margin-top: -8px;
+  top: 50%;
+}
+.ZSdialog-right-bottom .zs-dialog-arrow-a,
+.ZSdialog-right-bottom .zs-dialog-arrow-b {
+  bottom: 15px;
+}

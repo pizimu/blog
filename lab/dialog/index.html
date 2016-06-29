@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dialog</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/index.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/theme.css">
+
+	<style type="text/css">
+		h1{
+			margin-bottom: 10px;
+			line-height: 1.5;
+			border-bottom: 1px solid #cecece;
+		}
+		pre{
+			padding: 1em;
+			line-height: 1.4;
+			background: #eee;
+		}
+		.table {
+		    width: 100%;
+		    border-collapse: collapse;
+		    border-left: 0;
+		    font-size:12px;
+		}
+		
+		.table td,.table th {
+		    padding: 7px 5px;
+		    border-top: 1px solid #ccc
+		}
+
+		.table th {
+		    background-color: #cfcfcf;
+		    color: #0a0a0a
+		}
+
+		.table td:last-child,.table th:last-child {
+		    border-right: none
+		}
+
+		.table.table-striped tbody>tr:nth-child(even)>td,.table.table-striped tbody>tr:nth-child(even)>th {
+		    background-color: #fdfcf2
+		}
+
+		.table.table-bordered {
+		    border: 1px solid #ddd
+		}
+
+		.table.table-bordered td,.table.table-bordered th {
+		    border-right: 1px solid #ccc
+		}
+
+		.table.table-bordered td:last-child,.table.table-bordered th:last-child {
+		    border-right: none
+		}
+		.table p{
+			margin:5px 0;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		var ZSdialog = window.dialog || window.ZSdialog;
+		ZSdialog.config = {
+			backdropBackground:'#ccc',
+			backdropOpacity:'1'
+		};
+
+		$(document).on('click', '[data-code]', function(){
+			Function($(this).prev().html())();
+		});
+	</script>
+<div style="width:800px; margin:0 auto;">
+<h1>方法</h1>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>事件</th>
+			<th>描述</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>show([element])</td>
+			<td>
+			显示对话框
+			<p>参数类型为<code>HTMLElement</code>:可吸附于元素上，同时呈气泡样式</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td>showModal([element])</td>
+			<td>显示一个模态对话框。同<code>show</code></td>
+		</tr>
+		
+		<tr>
+			<td>close()</td>
+			<td>关闭（隐藏）对话框。
+				<p>删除请使用<code>remove()</code>方法</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td>remove()</td>
+			<td>销毁对话框</td>
+		</tr>
+
+		<tr>
+			<td>content(html)</td>
+			<td>写入对话框内容</td>
+		</tr>
+
+		<tr>
+			<td>title(text)</td>
+			<td>写入对话框标题</td>
+		</tr>
+
+		<tr>
+			<td>width(value)</td>
+			<td>设置对话框宽度</td>
+		</tr>
+
+		<tr>
+			<td>height(value)</td>
+			<td>设置对话框高度</td>
+		</tr>
+
+		<tr>
+			<td>reset()</td>
+			<td>手动刷新对话框位置</td>
+		</tr>
+
+		<tr>
+			<td>button(args)</td>
+			<td>自定义按钮</td>
+		</tr>
+		
+		<tr>
+			<td>focus()</td>
+			<td>聚焦对话框（置顶）</td>
+		</tr>
+
+		<tr>
+			<td>blur()</td>
+			<td>让对话框失去焦点</td>
+		</tr>
+
+		<tr>
+			<td>ZSdialog.get(id)</td>
+			<td>根据id获取打开的对话框的实例</td>
+		</tr>
+
+		<tr>
+			<td>dialog.getCurrent()</td>
+			<td>获取当前（置顶）对话框实例</td>
+		</tr>
+	</tbody>
+</table>
+
+<h1>参数</h1>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td>参数</td>
+			<td>类型</td>
+			<td>描述</td>
+		</tr>
+	</thead>
+	<tr>
+		<td>title</td>
+		<td>String</td>
+		<td>标题内容</td>
+	</tr>
+	<tr>
+		<td>content</td>
+		<td>String</td>
+		<td>设置消息内容</td>
+	</tr>
+	<tr>
+		<td>ok</td>
+		<td>Function</td>
+		<td>确定按钮
+			<p>回调函数<code>this</code>指向<code>ZSdialog</code>对象，执行完毕默认关闭对话框，若返回 false 则阻止关闭。</p>
+		</td>
+	</tr>
+	<tr>
+		<td>okValue</td>
+		<td>String</td>
+		<td>确定按钮文本。默认值：'ok'</td>
+	</tr>
+	<tr>
+		<td>cancel</td>
+		<td>Function, Boolean</td>
+		<td>取消按钮
+			<p>等同于标题栏关闭按钮。值为 false 则不显示关闭按钮。</p>
+		</td>
+	</tr>
+	<tr>
+		<td>cancelValue</td>
+		<td>String</td>
+		<td>取消按钮文本。默认值：'cancel'</td>
+	</tr>
+	<tr>
+		<td>cancelDisplay</td>
+		<td>Boolean</td>
+		<td>是否显示取消按钮。默认值：true</td>
+	</tr>
+	<tr>
+		<td>button</td>
+		<td>Array</td>
+		<td>
+			自定义按钮组
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>参数</th>
+						<th>类型</th>
+						<th>描述</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>value</td>
+						<td>String</td>
+						<td>按钮显示文本</td>
+					</tr>
+					<tr>
+						<td>callback</td>
+						<td>Function</td>
+						<td>回调函数。this指向<code>ZSdialog</code>对象。执行完毕默认关闭与销毁对话框。若返回 false 则阻止关闭与销毁。</td>
+					</tr>
+					<tr>
+						<td>autofocus</td>
+						<td>Boolean</td>
+						<td>是否自动聚焦。默认：false</td>
+					</tr>
+					<tr>
+						<td>disabled</td>
+						<td>Boolean</td>
+						<td>是否禁用。默认：false</td>
+					</tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>width</td>
+		<td>String, Number</td>
+		<td>设置对话框宽度</td>
+	</tr>
+	<tr>
+		<td>height</td>
+		<td>String, Number</td>
+		<td>设置对话框高度</td>
+	</tr>
+	<tr>
+		<td>skin</td>
+		<td>String</td>
+		<td>设置对话框额外的<code>className</code>参数</td>
+	</tr>
+	<tr>
+		<td>padding</td>
+		<td>String, Number</td>
+		<td>设置消息内容与消息容器的填充边距</td>
+	</tr>
+	<tr>
+		<td>fixed</td>
+		<td>Boolean</td>
+		<td>开户固定位置。默认值：false。</td>
+	</tr>
+	<tr>
+		<td>align</td>
+		<td>String</td>
+		<td>设置对话框与其它元素的对齐方式。默认值：'bottom left'
+			<p>支持格式：</p>
+			<div>'top left', 'top', 'top right', 'right top', 'right', 'right bottom', 'bottom right', 'bottom', 'bottom left', 'left bottom', 'left', 'left top'</div>
+		</td>
+	</tr>
+	<tr>
+		<td>autofocus</td>
+		<td>Boolean</td>
+		<td>是否支持自动聚焦。默认值：true</td>
+	</tr>
+	<tr>
+		<td>quickClose</td>
+		<td>Boolean</td>
+		<td>是否点击空白处快速关闭。默认值：false</td>
+	</tr>
+	<tr>
+		<td>zIndex</td>
+		<td>Number</td>
+		<td>重置全局<code>zIndex</code>初始值，用来改变对话框叠加高度。默认值：1024
+			<p>注意：会影响全局配置。后续出现的对话框高度叠加以此为准。</p>
+		</td>
+	</tr>
+	<tr>
+		<td>onshow</td>
+		<td>Function</td>
+		<td>对话框打开事件。回调函数 this 指向<code>ZSdialog</code></td>
+	</tr>
+	<tr>
+		<td>onclose</td>
+		<td>Function</td>
+		<td>对话框关闭后执行事件</td>
+	</tr>
+	<tr>
+		<td>onbeforeremove</td>
+		<td>Function</td>
+		<td>对话框销毁前事件</td>
+	</tr>
+	<tr>
+		<td>onremove</td>
+		<td>Function</td>
+		<td>对话框销毁事件</td>
+	</tr>
+	<tr>
+		<td>onfocus</td>
+		<td>Function</td>
+		<td>对话框获得焦点事件</td>
+	</tr>
+	<tr>
+		<td>onblur</td>
+		<td>Function</td>
+		<td>对话框失去焦点事件</td>
+	</tr>
+	<tr>
+		<td>onreset</td>
+		<td>Function</td>
+		<td>对话框位置重置事件</td>
+	</tr>
+	<tr>
+		<td>id</td>
+		<td>String</td>
+		<td>设置对话框唯一标示。
+			<p>可防止重复ID对话框弹出。支持使用<code>ZSdialog.get(id)</code>获取某个对话框</p>
+		</td>
+	</tr>
+	<tr>
+		<td>backdropBackground</td>
+		<td>String</td>
+		<td>遮罩层颜色值。默认值：'#000'</td>
+	</tr>
+	<tr>
+		<td>backdropOpacity</td>
+		<td>Number</td>
+		<td>遮罩层半透明度。默认值：0.55</td>
+	</tr>
+	<tr>
+		<td>className</td>
+		<td>String</td>
+		<td>弹框默认样式。默认值：'ZSdialog'</td>
+	</tr>
+</table>
+<h1>属性</h1>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>属性名</th>
+			<th>类型</th>
+			<th>描述</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>open</td>
+			<td>Boolean</td>
+			<td>判断对话框是否被打开</td>
+		</tr>
+	</tbody>
+</table>
+
+<h1>参考</h1>
+<h2>普通对话框</h2>
+<pre><code>var d = ZSdialog({
+    title: 'welcome',
+    content: 'welcome use ZSdialog'
+});
+d.show();
+</code>
+<button data-code="1">run</button>
+</pre>
+
+<h2>模态对话框</h2>
+<pre><code>var d = ZSdialog({
+    title: 'welcome',
+    content: 'welcome use ZSdialog'
+});
+d.showModal();
+</code>
+<button data-code="2">run</button>
+</pre>
+
+<h2 id="bubble" style="display:inline-block;">气泡浮层</h2>
+<pre><code>var d = ZSdialog({
+    content: 'welcome use ZSdialog',
+    quickClose: true
+});
+d.show(document.getElementById('bubble'));
+</code>
+<button data-code="2">run</button>
+</pre>
+
+<h2>确定与取消按钮</h2>
+<pre><code>var d = ZSdialog({
+	title: '提示',
+	content: '带有按钮的弹出框',
+	okValue: 'ok',
+	ok: function(){
+		this.title('提交中...');
+		return false;
+	},
+	cancelValue: 'cancel',
+	cancel: true
+});
+d.showModal();
+</code>
+<button data-code="3">run</button>
+</pre>
+</div>
+</body>
+</html>
