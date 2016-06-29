@@ -61,14 +61,16 @@
 </head>
 <body>
 	<script>
-		var ZSdialog = window.dialog || window.ZSdialog;
-		ZSdialog.config = {
-			backdropBackground:'#ccc',
-			backdropOpacity:'1'
-		};
-
-		$(document).on('click', '[data-code]', function(){
-			Function($(this).prev().html())();
+		$(function(){
+			var ZSdialog = window.dialog || window.ZSdialog;
+			ZSdialog.config = {
+				backdropBackground:'#ccc',
+				backdropOpacity:'1'
+			};
+	
+			$(document).on('click', '[data-code]', function(){
+				Function($(this).prev().html())();
+			});
 		});
 	</script>
 <div style="width:800px; margin:0 auto;">
