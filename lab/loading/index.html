@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>loading</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/loading.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/theme.css">
+	<style type="text/css">
+		body {
+		  padding: 20px;
+		}
+		.container button,
+		.container .box{
+			border-radius: 5px;
+			margin-bottom: 20px;
+		}
+		
+		.inline{
+			display: inline-block;
+		}
+		button{
+			padding: 15px 25px;
+			border: 2px solid #ccc;
+			outline: 0;
+			font-size: 16px;
+		}
+		button:hover{
+			box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+		}
+		.box{
+			padding: 50px 20px;
+			border: 5px solid #cecece;
+			box-shadow: 0 0 3px #ccc;
+		}
+		.clear-loading{
+			background: red;
+		    color: #fff;
+		    border-color: red;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+			
+			$('button').click(function(){
+				switch(true){
+					case $(this).hasClass('clear-loading'):
+						$('button, .box').each(function(){
+							$(this).loading(false);
+						});
+						break;
+					case $(this).hasClass('global-loading'):
+						$.loading();
+						setTimeout(function () {
+							$.loading(false);
+						}, 5000);
+						break;
+					default:
+						$(this).loading();
+				}
+			});
+			$('.box').click(function () {
+				$(this).loading(true, 'big');
+			});
+		};
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="inline">
+			<button>我是一个button。点我会有loading</button>
+			<button>我也是</button>
+			<button class="clear-loading">我是来清除loading</button>
+		</div>
+		<div class="box">我是一个div,点我会给你个大圈圈</div>
+		<button class="global-loading">来个5秒的全遮住？</button>
+	</div>
+</body>
+</html>
