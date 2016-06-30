@@ -5,7 +5,7 @@
 			<dd>
 				<ul class="unstyled">
 					{% for category in site.categories %}
-					<li><a href="{{ site.baseurl }}{{ site.categoryurl }}index.html#cat={{ category | first }}">{{ category | first }} <span class="badge">{{ category | last | size }}</span></a></li>
+					<li><a href="{{ site.baseurl }}{{ site.categoryurl + 'sfa' }}index.html#cat={{ category | first }}">{{ category | first }} <span class="badge">{{ category | last | size }}</span></a></li>
 					{% endfor %}
 					
 				</ul>
