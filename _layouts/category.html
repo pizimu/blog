@@ -16,7 +16,7 @@
 	    			avchieves = hash.cat ? data[hash.cat] : [];
 	    		avchieves.forEach(function(item){
 			        html += '<li>' + 
-			                '   <a href="{{ site.baseurl }}' + item.url + '">' +
+			                '   <a href="{{ site.baseurl }}{{ site.categoryurl }}' + item.url + '">' +
 			                '       <div class="clearfix">' +
 			                '           ' + item.title + ' <span class="small">- ' + item.date + '</span>' + 
 			                '       </div>' + 
