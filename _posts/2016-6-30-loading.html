@@ -1,0 +1,44 @@
+---
+layout: blog-info
+title: 一个简单的loading插件
+tags: [javascript, plugins]
+categories: [2016-6]
+excerpt: $.loading 与 $.fn.loading
+---
+<h3 class="page-header">$.loading</h3>
+<h4>用法</h4>
+<pre class="code">
+// $.loading(status)
+// loading 永远只有一个。每次打开，与关闭，不影响其它 loading。
+// 参数: 
+//   status: Boolean。为 true值 或 空值 时，打开loading ;为 false值 时，关闭loading
+
+// 打开
+	$.loading();
+	$.loading(true);
+// 关闭
+	$.loading(false);
+	$.loading(0); 
+</pre>
+
+
+<h3 class="page-header">$.fn.loading</h3>
+<h4>用法</h4>
+<pre class="code">
+// $.fn.loading(onoff, cls)
+// 在当前元素加载loading
+// 参数: 
+//   onoff: Boolean。为 true值 或 空值 时，打开loading ;为 false值 时，关闭loading
+//   cls: String。 为 loading 添加的类。自带值：mini(默认) | big。 可自定义添加
+
+// 打开
+	$(selector).loading();
+	$(selector).loading(true, 'big');
+// 关闭
+	$(selector).loading(false);
+	$(selector).loading(0); 
+</pre>
+
+<p></p><p></p>
+<h4>demo</h4>
+<a href="/blog/lab/loading/index.html" target="_blank">点击查看</a>
