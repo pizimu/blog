@@ -1,0 +1,246 @@
+
+@select-border: 			#888;
+@select-border-radius: 		4px;
+@select-height: 			28px;
+@select-line-height: 		@select-height;
+
+// bg
+@select-default-bg: 		#fff;
+
+@select-arrow-color: 		@select-border;
+
+// state
+@option-active-bg: 				#ddd;
+@option-hover-bg: 				#5897fb;
+@option-hover-font-color: 		#fff;
+
+
+// ellipsis
+.ellipsis(){
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.opacity(@opacity){
+	@opacity-ie: @opacity * 100;
+	filter: ~"alpha(opacity=@{opacity-ie})";
+	opacity: @opacity;
+} 
+.arrow(){
+	.select-selection-arrow {
+		position: absolute;
+		display: block;
+		right: 1px;
+		top: 1px;
+		width: 20px;
+		height: @select-height - 2;
+
+		b {
+			position: absolute;
+			display: block;
+			left: 50%;
+			top: 50%;			
+		}
+		
+	}
+	.select-selection-arrow-triangle {
+		b {
+			margin-left: -2px;
+			margin-top: -3px;
+			width: 0;
+			border-color: @select-arrow-color transparent transparent;
+			border-style: solid;
+			border-width: 5px 4px 0 4px;
+		}
+	}
+	.select-selection-arrow-line {
+		b {
+			margin-left: -4px;
+			margin-top: -3px;
+			width: 12px;
+			height: 8px;
+			background: url(../images/sprite_home.png) -10px -87px no-repeat;
+		}
+	}
+	
+}
+.arrow();
+.select-container {
+
+	display: inline-block;
+	position: relative;
+	margin: 0;
+	width: 100%;
+	vertical-align: middle;
+	*,& {
+		box-sizing: border-box;
+	}
+}
+.select-selection-single {
+	display: block;
+	
+	height: @select-height;
+	line-height: @select-line-height;
+
+	.select-selection-rendered {
+	    display: block;
+	    padding-left: 8px;
+	    padding-right: 20px;
+	    .ellipsis();
+	    .select-selection-clear {
+	    	position: absolute;
+			top:0;
+			right:20px;
+	    	font-weight: bold;
+	    	cursor: pointer;
+	    	.opacity(0.5);
+	    	
+	    }
+	    .select-selection-placeholder {
+	    	display: block;
+	    	.opacity(0.5);		    	
+	    }
+	}
+	
+} 
+.select-results {
+	> .select-results-options {
+		max-height: 200px;
+		overflow-y: auto;
+	}
+
+	.select-results-options {
+		margin: 0;
+		padding: 0;			
+		list-style: none;
+		
+	}
+	.select-results-option {
+		padding: 6px;
+
+		&[role="treeitem"]:hover {
+			cursor: pointer;
+			background-color: @option-hover-bg;
+			color: @option-hover-font-color;
+		}
+		&.select-results-message {
+			font-size: .8em;
+			.opacity(0.6);
+			
+			&:hover {
+				cursor: auto;
+				background-color: inherit;
+				color: inherit;
+			}
+		}
+		&.active {
+			background-color: @option-active-bg;
+		}
+		&[role="group"] {
+			padding: 0;
+		}
+		.select-results-option {
+			padding-left: 1em;
+		}
+	}
+
+	.select-results-group {
+		display: block;
+		padding: 6px;
+		cursor: default;
+	}
+}
+.select-container-open {
+	.select-selection-arrow-triangle {
+		b {
+			border-width: 0 4px 5px 4px;
+			border-color: transparent transparent @select-arrow-color;
+		}
+	}
+	.select-selection-arrow-line {
+		b {				
+			background-position: -10px -80px;
+
+		}
+	}
+	
+	&.select-container-below {	
+		.select-selection-single {
+			border-radius: @select-border-radius @select-border-radius 0 0;
+		}    	
+    }
+    &.select-container-above {
+    	.select-selection-single {
+			border-radius: 0 0 @select-border-radius @select-border-radius;
+		} 
+    }
+
+	.select-dropdown {
+	    display: block;
+	    position: absolute;
+	    width: 100%;
+		background-color: white;
+	    border: 1px solid #aaa;
+	    box-sizing: border-box;
+	    &.select-dropdown-below {
+	    	margin-top: -1px;
+	    	border-radius: 0 0 @select-border-radius @select-border-radius;
+	    }
+	    &.select-dropdown-above {
+	    	margin-top: 1px;
+	    	border-radius: @select-border-radius @select-border-radius 0 0;
+	    }
+	    .select-search {
+	    	display: block;
+	    	padding: 4px;
+	    	.select-search-field {
+	    		width: 100%;
+	    		height: @select-height;
+				line-height: @select-line-height;
+				border: 1px solid lighten(@select-border,20%);
+				&:focus {
+					outline: none;
+					border-color: lighten(@select-border,20%);
+					box-shadow: 0 0 3px lighten(@select-border,30%) inset;
+				}
+	    	}
+	    }
+	    * {
+	    	 -webkit-user-select: none;
+	    	 user-select: none;
+	    }
+	}
+}
+.select-container-default {
+	.select-selection-single {
+		background-color: @select-default-bg;
+		border: 1px solid @select-border;
+		border-radius: @select-border-radius;
+	}
+
+}
+
+// 这里是放IE7-IE8不支持的，更有用的代码
+@media screen and (min-width: 0px) {
+	.select-selection-arrow-line {
+		b {
+			margin-left: -4px;
+			margin-top: -3px;
+			width: 8px;
+			height: 8px;
+			border: 1px solid;
+			border-color: @select-arrow-color @select-arrow-color transparent transparent;
+			transform: rotate(-45deg);
+			background: none;
+		}
+	}
+	.select-container-open {
+		.select-selection-arrow-line {
+			b {				
+				margin-top: -6px;
+				transform: rotate(135deg);
+
+			}
+		}
+	}
+}

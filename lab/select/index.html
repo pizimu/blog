@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>select</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/select.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/theme.css">
+	<style type="text/css">
+		body {
+		  padding: 20px;
+		  font-family: arial;
+		}
+		
+		.container > div {
+			width: 400px;
+			float: left;
+			margin-right: 20px;
+		}
+			
+	
+	</style>
+	<script type="text/javascript">
+		$(function () {
+			$('select').each(function () {
+				var data = $(this).data();
+				$(this).select(data);
+			});
+			// $('select').select({
+			// 	placeholder: 'select a value',
+			// 	allowClear: true,
+			// 	icon: 0, 
+			// 	onrendered: function () {
+			// 		console.log('rendered');
+			// 	},
+			// 	onchange: function () {
+			// 		console.log('change');
+			// 	},
+			// 	onclear: function () {
+			// 		console.log('clear');
+			// 	}
+			// });
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div>
+			<select name="select-1" data-allow-clear="true" data-placeholder="select a value">
+			    <option value="volvo">Volvo</option>
+			    <option value="saab">Saab</option>
+			    <option value="mercedes">Mercedes</option>
+			    <option value="audi">Audi</option>
+			</select>
+		</div>
+		<div>
+			<select name="select-2" data-placeholder="select a value" data-allow-clear="false" data-icon="1" data-allow-search="false">
+				<optgroup label="label-1">
+					<option value="volvo">Volvo</option>
+				    <option value="saab">Saab</option>
+				    <option value="mercedes">Mercedes</option>
+				    <option value="audi">Audi</option>
+				</optgroup>
+			    <optgroup label="label-2">
+					<option value="volvo2">Volvo2</option>
+				    <option value="saab2">Saab2</option>
+				    <option value="mercedes2">Mercedes2</option>
+				    <option value="audi2">Audi2</option>
+				</optgroup>
+			</select>
+		</div>
+		
+	</div>
+</body>
+</html>
