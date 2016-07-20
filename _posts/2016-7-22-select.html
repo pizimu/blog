@@ -1,0 +1,39 @@
+---
+layout: blog-info
+title: 格式化的select下拉菜单
+tags: [javascript, plugins]
+categories: [2016-7]
+excerpt: $.fn.select
+---
+<h3 class="page-header">$.fn.select</h3>
+<h4>用法</h4>
+<pre class="code">
+// $.loading(status)
+// loading 永远只有一个。每次打开，与关闭，不影响其它 loading。
+// 参数: 
+//   placeholder: '' 		String 为空时显示默认值
+//   allowSearch: true 		Boolean 显示搜索文本框
+//   allowClear: false 		Boolean 显示删除按钮
+//   icon: 0  				Number 右侧小图标按钮 0:▲,1:∧
+//   notFound: 'No results found' String 搜索无果时显示
+//   onrendered: $.noop		Function 渲染后事件 返回这个对象。选择的select的值包含在这个对象的data属性里
+//   onchange: $.noop		Function 值发生改变后事件，当值为空时，触发onclear事件，不会触发此事件
+//   onclear: $.noop		Function 清空值后事件
+
+// 使用
+	$(selector).select({
+		onrendered: function () {
+			console.log('初始选中了 ' + this.data.text + ' ,它的值为 ' + this.data.value);
+		},
+		onclick: function () {
+			console.log('你选中了 ' + this.data.text);
+		}
+	});
+	
+</pre>
+
+
+
+<p></p><p></p>
+<h4>demo</h4>
+<a href="/blog/lab/select/index.html" target="_blank">点击查看</a>
