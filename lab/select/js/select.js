@@ -10,7 +10,7 @@
 	$.extend(Select.prototype, {
 		main: function () {
 			var $select = this.$select;
-			this.id = new Date() * 1;			
+			this.id = new Date() * 1 + '' + Math.ceil(Math.random()*100000);			
 			this.renderNode();
 
 			$select.after(this.node)
