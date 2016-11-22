@@ -197,7 +197,7 @@
 			return this._node.find('[i=' + i + ']');
 		},
 		show: function(anchor){
-			if(this.destoryed){
+			if(this.destroyed){
 				return this;
 			}
 
@@ -266,7 +266,7 @@
 			return this.show.apply(this, arguments);
 		},
 		close: function(){
-			if(!this.destoryed && this.open){
+			if(!this.destroyed && this.open){
 				this._node.hide()
 					.removeClass(this.className + '-show');
 				this.__backdrop.hide();
@@ -278,7 +278,7 @@
 			
 		},
 		remove: function(){
-			if (this.destoryed) {
+			if (this.destroyed) {
 				return this;
 			}
 
