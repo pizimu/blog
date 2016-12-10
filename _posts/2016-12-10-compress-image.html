@@ -1,0 +1,35 @@
+---
+layout: blog-info
+title: 使用canvas与FileRender压缩图片
+tags: [javascript, plugins]
+categories: [2016-12]
+excerpt: $.fn.compressImg
+---
+<h3 class="page-header">$.fn.compressImg</h3>
+<h4>用法</h4> 
+<pre class="code">
+// $.fn.compressImg(options)
+// 参数: options
+//	$thumb: 	Boolean, // 显示缩略图的元素，无就设置为空或false
+//	scale: 		Number, // 图片压缩比例(0~1)
+//	limitSize:  Number, // 限止图片大小（KB），如果图片过大，会比例减小scale值，来确保图片大小符合要求
+//	imgWidth: 	Number, // 图片尺寸 为false值则表示自动等比缩放
+//	imgHeight: 	Number, // 图片尺寸
+//	lowBrowser: Function, // 低版本浏览器方案（IE9及以下）
+//	callback: 	Function, // 回调函数，参数：压缩后的图片路径
+
+
+// 使用
+	$(selector).compressImg({
+		callback: function (imgURL) {
+			console.log('Here is your img Path:\n' + imgURL);
+		}
+	});
+	
+</pre>
+
+
+
+<p></p><p></p>
+<h4>demo</h4>
+<a href="/blog/lab/compressImg/index.html" target="_blank">点击查看</a>
