@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>compress image</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/compressImg.js"></script>
+</head>
+<body>
+	
+	
+	<input type="file" id='upload1'>
+	<img class="thumb" />
+	<script type="text/javascript">
+		$('#upload1').compressImg({
+			$thumb: $('.thumb'),
+			lowBrowser: function () {
+				alert('你的浏览器版本太低，我不想服务你。');
+			}
+		});
+	</script>
+</body>
+</html>
